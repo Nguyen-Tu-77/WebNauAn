@@ -3,305 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CookBook - Chia Sẻ Công Thức Nấu Ăn</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Dancing+Script:wght@400;500;600;700&display=swap');
-        
-        * {
-            box-sizing: border-box;
-        }
-        
-        body { 
-            font-family: 'Inter', sans-serif;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-        
-        /* Logo Animation */
-        .logo-text {
-            font-family: 'Dancing Script', cursive;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            text-shadow: 0 4px 8px rgba(0,0,0,0.12);
-            transition: all 0.3s ease;
-        }
-        .logo-text:hover {
-            transform: scale(1.05);
-            text-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-        
-        /* Enhanced Recipe Card Animations */
-        .recipe-card { 
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateY(0);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        .recipe-card:hover { 
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .recipe-card:active {
-            transform: translateY(-4px) scale(1.01);
-            transition: all 0.1s ease;
-        }
-        
-        /* Enhanced Filter Button Animations */
-        .filter-btn {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            border: 2px solid transparent;
-        }
-        .filter-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-        .filter-btn:hover::before {
-            left: 100%;
-        }
-        .filter-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(234, 88, 12, 0.2);
-            border-color: rgba(234, 88, 12, 0.3);
-        }
-        .filter-btn.active {
-            background: linear-gradient(135deg, #ea580c, #dc2626);
-            color: white;
-            box-shadow: 0 8px 25px rgba(234, 88, 12, 0.4);
-            border-color: #ea580c;
-        }
-        .filter-btn.active:hover {
-            background: linear-gradient(135deg, #dc2626, #b91c1c);
-        }
-        
-        /* Enhanced Ranking Item Animation */
-        .ranking-item {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border-left: 4px solid transparent;
-        }
-        .ranking-item:hover {
-            transform: translateY(-4px) translateX(8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            border-left-color: #ea580c;
-        }
-        
-        /* Page Transition Animation */
-        .page-content {
-            animation: fadeInUp 0.6s ease-out;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Modal Animation */
-        .modal-content {
-            animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        @keyframes modalSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-50px) scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-        
-        /* Search Bar Enhancement */
-        .search-container {
-            position: relative;
-        }
-        .search-container::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #ea580c, #ef4444);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
-        .search-container:focus-within::after {
-            width: 100%;
-        }
-        
-        /* Heart Pulse Animation */
-        .heart-pulse {
-            animation: heartPulse 0.6s ease-in-out;
-        }
-        @keyframes heartPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.3); }
-            100% { transform: scale(1); }
-        }
-        
-        /* Enhanced Form Inputs */
-        .form-input {
-            transition: all 0.3s ease;
-            border: 2px solid #e5e7eb;
-        }
-        .form-input:focus {
-            border-color: #ea580c;
-            box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1);
-            transform: translateY(-2px);
-        }
-        
-        /* Gradient Text Animation */
-        .gradient-text {
-            background: linear-gradient(-45deg, #ea580c, #ef4444, #f97316, #dc2626);
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: gradientShift 3s ease-in-out infinite;
-        }
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        /* Enhanced Filter Panel Styles */
-        .filter-panel {
-            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,247,237,0.95));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(234, 88, 12, 0.1);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-
-        .filter-section {
-            position: relative;
-        }
-        .filter-section::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, #ea580c, #dc2626);
-            border-radius: 2px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .filter-section:hover::before {
-            opacity: 1;
-        }
-
-        .filter-dropdown {
-            background: white;
-            border: 2px solid #f3f4f6;
-            transition: all 0.3s ease;
-        }
-        .filter-dropdown:focus {
-            border-color: #ea580c;
-            box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1);
-        }
-
-        .clear-filters-btn {
-            background: linear-gradient(135deg, #f87171, #ef4444);
-            transition: all 0.3s ease;
-        }
-        .clear-filters-btn:hover {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
-        }
-
-        /* Added for images: Ensure images fit without distortion */
-        .recipe-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    </style>
+    <title>CookVerse - Cộng đồng chia sẻ công thức nấu ăn</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="bg-gradient-to-br from-orange-50 to-red-50 min-h-screen">
+<body>
     <!-- Header -->
-    <header class="bg-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
-                <!-- Logo - Clickable to go home -->
-                <div class="cursor-pointer hover:opacity-90 transition-all duration-300 hover:scale-105" onclick="showPage('home')">
-                    <h1 class="text-5xl font-black relative tracking-wide logo-text">
-                        <span class="bg-gradient-to-r from-orange-500 via-red-500 to-orange-600 bg-clip-text text-transparent">Cook</span><span class="bg-gradient-to-r from-red-500 via-orange-500 to-red-600 bg-clip-text text-transparent">Book</span>
-                        <div class="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-red-400 rounded-full opacity-70 shadow-sm"></div>
-                    </h1>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo" onclick="showPage('home')">
+                <i class="fas fa-utensils"></i>
+                <span>CookVerse</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" onclick="showPage('home')" class="active">Trang chủ</a></li>
+                    <li><a href="#" onclick="showPage('recipes')">Công thức</a></li>
+                    <li><a href="#" onclick="showPage('community')">Cộng đồng</a></li>
+                    <li><a href="#" onclick="showPage('about')">Về chúng tôi</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Tìm công thức, nguyên liệu...">
+                    <i class="fas fa-search" onclick="performSearch()"></i>
                 </div>
                 
-                <!-- Navigation Menu -->
-                <nav class="hidden md:flex items-center space-x-1">
-                    <a href="#" onclick="showPage('recipes')" class="nav-link text-gray-600 hover:text-orange-600 font-medium transition-all duration-300 px-4 py-2 rounded-lg hover:bg-orange-50">
-                        Công Thức
-                    </a>
-                    <a href="#" onclick="showPage('favorites')" class="nav-link text-gray-600 hover:text-orange-600 font-medium transition-all duration-300 px-4 py-2 rounded-lg hover:bg-orange-50">
-                        Yêu Thích
-                    </a>
-                    <a href="#" onclick="showPage('rankings')" class="nav-link text-gray-600 hover:text-orange-600 font-medium transition-all duration-300 px-4 py-2 rounded-lg hover:bg-orange-50">
-                        Xếp Hạng
-                    </a>
-                </nav>
-
-                <!-- Action Buttons -->
-                <div class="flex items-center space-x-3">
-                    <button onclick="showShareModal()" class="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-5 py-2 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95 flex items-center gap-2">
-                        <span class="text-lg">✍️</span>
-                        <span class="hidden sm:inline">Chia Sẻ</span>
+                <!-- Hiển thị khi chưa đăng nhập - LUÔN HIỆN -->
+                <div id="authButtons" class="auth-buttons">
+                    <button class="btn btn-login" onclick="showLoginModal()">
+                        <i class="fas fa-sign-in-alt"></i> Đăng nhập
                     </button>
-                    
-                    <!-- Auth Buttons -->
-                    <div class="hidden md:flex items-center space-x-2">
-                        <button onclick="showLoginModal()" class="text-gray-600 hover:text-orange-600 px-4 py-2 rounded-lg font-medium transition-colors">
-                            Đăng Nhập
-                        </button>
-                        <button onclick="showRegisterModal()" class="bg-white border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white px-4 py-2 rounded-lg font-medium transition-all duration-300">
-                            Đăng Ký
-                        </button>
-                    </div>
-                    
-                    <!-- Mobile Menu Button -->
-                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
-                        <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
+                    <button class="btn btn-register" onclick="showRegisterModal()">
+                        <i class="fas fa-user-plus"></i> Đăng ký
                     </button>
                 </div>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div id="mobileMenu" class="md:hidden hidden border-t border-gray-200 py-4">
-                <div class="flex flex-col space-y-2">
-                    <a href="#" onclick="showPage('recipes'); toggleMobileMenu()" class="text-gray-600 hover:text-orange-600 font-medium px-4 py-3 rounded-lg hover:bg-orange-50 transition-colors">
-                        Công Thức
-                    </a>
-                    <a href="#" onclick="showPage('favorites'); toggleMobileMenu()" class="text-gray-600 hover:text-orange-600 font-medium px-4 py-3 rounded-lg hover:bg-orange-50 transition-colors">
-                        Yêu Thích
-                    </a>
-                    <a href="#" onclick="showPage('rankings'); toggleMobileMenu()" class="text-gray-600 hover:text-orange-600 font-medium px-4 py-3 rounded-lg hover:bg-orange-50 transition-colors">
-                        Xếp Hạng
-                    </a>
-                    <div class="border-t border-gray-200 pt-2 mt-2">
-                        <button onclick="showLoginModal(); toggleMobileMenu()" class="w-full text-left text-gray-600 hover:text-orange-600 font-medium px-4 py-3 rounded-lg hover:bg-orange-50 transition-colors">
-                            Đăng Nhập
-                        </button>
-                        <button onclick="showRegisterModal(); toggleMobileMenu()" class="w-full text-left text-gray-600 hover:text-orange-600 font-medium px-4 py-3 rounded-lg hover:bg-orange-50 transition-colors">
-                            Đăng Ký
-                        </button>
+                
+                <!-- Hiển thị khi đã đăng nhập -->
+                <div id="userMenu" class="user-menu" style="display: none;">
+                    <button class="btn" id="addRecipeBtn" onclick="showAddRecipeModal()">
+                        <i class="fas fa-plus"></i> Đăng công thức
+                    </button>
+                    <div class="user-avatar-container">
+                        <div class="user-avatar-small" id="userAvatarSmall" onclick="toggleUserDropdown()">
+                            <img id="userAvatarImg" src="" alt="Avatar">
+                            <i class="fas fa-caret-down"></i>
+                        </div>
+                        <div class="user-dropdown" id="userDropdown">
+                            <div class="dropdown-header">
+                                <div class="dropdown-avatar">
+                                    <img id="dropdownAvatarImg" src="" alt="Avatar">
+                                </div>
+                                <div class="dropdown-user-info">
+                                    <strong id="dropdownUserName"></strong>
+                                    <span id="dropdownUserEmail"></span>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" onclick="showUserProfile(); closeUserDropdown();">
+                                <i class="fas fa-user"></i> Trang cá nhân
+                            </a>
+                            <a href="#" onclick="showMyRecipes(); closeUserDropdown();">
+                                <i class="fas fa-book"></i> Công thức của tôi
+                            </a>
+                            <a href="#" onclick="showSavedRecipes(); closeUserDropdown();">
+                                <i class="fas fa-heart"></i> Công thức đã lưu
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" onclick="logout(); closeUserDropdown();">
+                                <i class="fas fa-sign-out-alt"></i> Đăng xuất
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -309,1901 +81,545 @@
     </header>
 
     <!-- Home Page -->
-    <div id="home-page" class="page-content">
+    <section id="home" class="page-section active">
         <!-- Hero Section -->
-        <section class="py-16 px-4">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-5xl font-bold text-gray-800 mb-6">
-                    Khám Phá Thế Giới <span class="gradient-text">Ẩm Thực</span>
-                </h2>
-                <p class="text-xl text-gray-600 mb-8">
-                    Chia sẻ và khám phá những công thức nấu ăn tuyệt vời từ cộng đồng yêu thích ẩm thực
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Khám phá thế giới ẩm thực đa dạng</h1>
+                <p>Chia sẻ và khám phá hàng ngàn công thức nấu ăn từ cộng đồng những người yêu thích nấu nướng</p>
+                <div class="hero-btns">
+                    <button class="btn" onclick="showPage('recipes')">Khám phá ngay</button>
+                    <button class="btn btn-outline" onclick="showPage('about')">Tìm hiểu thêm</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Smart Cook Feature -->
+        <section class="smart-cook">
+            <div class="container">
+                <h2 class="section-title">Nấu Ăn Thông Minh</h2>
+                <p>Nhập nguyên liệu bạn có, chúng tôi sẽ gợi ý công thức phù hợp</p>
+                <div class="smart-cook-input">
+                    <input type="text" id="smartCookInput" placeholder="Ví dụ: thịt gà, nấm, cà chua...">
+                    <button class="btn" onclick="smartCook()">Tìm công thức</button>
+                </div>
+                <div id="smartCookResults" class="recipe-grid" style="margin-top: 2rem; display: none;"></div>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="categories">
+            <div class="container">
+                <h2 class="section-title">Danh Mục Phổ Biến</h2>
+                <div class="category-grid">
+                    <a class="category-card" onclick="filterByCategory('appetizers')">
+                        <div class="category-icon">
+                            <i class="fas fa-egg"></i>
+                        </div>
+                        <h3>Món Khai Vị</h3>
+                        <p>25 công thức</p>
+                    </a>
+                    <a class="category-card" onclick="filterByCategory('main-dishes')">
+                        <div class="category-icon">
+                            <i class="fas fa-drumstick-bite"></i>
+                        </div>
+                        <h3>Món Chính</h3>
+                        <p>48 công thức</p>
+                    </a>
+                    <a class="category-card" onclick="filterByCategory('desserts')">
+                        <div class="category-icon">
+                            <i class="fas fa-ice-cream"></i>
+                        </div>
+                        <h3>Tráng Miệng</h3>
+                        <p>32 công thức</p>
+                    </a>
+                    <a class="category-card" onclick="filterByCategory('vegetarian')">
+                        <div class="category-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Món Chay</h3>
+                        <p>18 công thức</p>
+                    </a>
+                    <a class="category-card" onclick="filterByCategory('beverages')">
+                        <div class="category-icon">
+                            <i class="fas fa-blender"></i>
+                        </div>
+                        <h3>Thức Uống</h3>
+                        <p>15 công thức</p>
+                    </a>
+                    <a class="category-card" onclick="filterByCategory('eat-clean')">
+                        <div class="category-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Eat Clean</h3>
+                        <p>22 công thức</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recipes -->
+        <section class="recipes">
+            <div class="container">
+                <h2 class="section-title">Công Thức Mới Nhất</h2>
+                <div class="recipe-grid" id="homeRecipes">
+                    <!-- Recipes will be loaded by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Recipes Page với Categories tích hợp -->
+    <section id="recipes" class="page-section">
+        <div class="container">
+            <div class="recipes-page">
+                <div class="recipes-header">
+                    <h2 class="section-title">Tất Cả Công Thức</h2>
+                    <div class="search-box-large">
+                        <input type="text" id="recipeSearchInput" placeholder="Tìm công thức, nguyên liệu...">
+                        <i class="fas fa-search" onclick="searchRecipes()"></i>
+                    </div>
+                </div>
+
+                <!-- Bộ lọc danh mục -->
+                <div class="category-filters">
+                    <div class="category-filter active" onclick="filterByCategory('all')">Tất cả</div>
+                    <div class="category-filter" onclick="filterByCategory('appetizers')">Món Khai Vị</div>
+                    <div class="category-filter" onclick="filterByCategory('main-dishes')">Món Chính</div>
+                    <div class="category-filter" onclick="filterByCategory('desserts')">Tráng Miệng</div>
+                    <div class="category-filter" onclick="filterByCategory('vegetarian')">Món Chay</div>
+                    <div class="category-filter" onclick="filterByCategory('beverages')">Thức Uống</div>
+                    <div class="category-filter" onclick="filterByCategory('eat-clean')">Eat Clean</div>
+                </div>
+
+                <div class="recipe-grid" id="allRecipes">
+                    <!-- All recipes will be loaded by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Page - CẬP NHẬT -->
+    <section id="community" class="page-section">
+        <div class="container">
+            <div class="community-page">
+                <h2 class="section-title">Cộng Đồng CookVerse</h2>
+                <p style="text-align: center; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    Kết nối với những người yêu thích nấu ăn, chia sẻ kinh nghiệm và học hỏi từ cộng đồng.
                 </p>
                 
-                <!-- Search Bar -->
-                <div class="max-w-2xl mx-auto mb-12">
-                    <div class="search-container relative">
-                        <div class="absolute left-4 top-1/2 transform -translate-y-1/2 text-orange-400 text-xl transition-all duration-300">
-                            🔍
+                <!-- Thống kê cộng đồng -->
+                <div class="community-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalUsers">0</div>
+                        <div class="stat-label">Thành viên</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalRecipes">0</div>
+                        <div class="stat-label">Công thức</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="totalLikes">0</div>
+                        <div class="stat-label">Lượt thích</div>
+                    </div>
+                </div>
+
+                <!-- Bộ lọc cộng đồng -->
+                <div class="community-filters">
+                    <button class="filter-btn active" onclick="filterCommunity('all')">Tất cả</button>
+                    <button class="filter-btn" onclick="filterCommunity('top')">Nổi bật</button>
+                    <button class="filter-btn" onclick="filterCommunity('new')">Mới nhất</button>
+                </div>
+
+                <div class="user-grid" id="communityUsers">
+                    <!-- Community users will be loaded by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Profile Page - CẬP NHẬT -->
+    <section id="user-profile" class="page-section">
+        <div class="container">
+            <div class="user-profile-page">
+                <div class="profile-header">
+                    <div class="profile-cover">
+                        <div class="profile-avatar-large">
+                            <img id="profileAvatarLarge" src="" alt="Avatar">
+                            <button class="edit-avatar-btn" onclick="changeAvatar()">
+                                <i class="fas fa-camera"></i>
+                            </button>
                         </div>
-                        <input type="text" 
-                               id="searchInput"
-                               placeholder="Tìm kiếm công thức, nguyên liệu, tác giả..." 
-                               class="form-input w-full pl-14 pr-20 py-4 bg-white border-2 border-orange-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 shadow-lg"
-                               onkeypress="handleSearchKeyPress(event)"
-                               oninput="handleSearchInput(event)">
-                        <button onclick="handleSearch()" 
-                                class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-6 py-2 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 hover:scale-105 active:scale-95">
-                            <span class="text-lg">🚀</span>
-                            <span class="hidden sm:inline">Tìm kiếm</span>
+                    </div>
+                    <div class="profile-info">
+                        <h1 id="profileName"></h1>
+                        <p id="profileEmail"></p>
+                        <p class="join-date">Tham gia từ: <span id="profileJoinDate"></span></p>
+                        <p class="profile-bio" id="profileBio">Chưa có giới thiệu</p>
+                        <button class="btn btn-edit" onclick="EditProfile()">
+                            <i class="fas fa-edit"></i> Chỉnh sửa hồ sơ
                         </button>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Featured Recipes -->
-        <section class="py-12 px-4">
-            <div class="max-w-7xl mx-auto">
-                <h3 class="text-3xl font-bold text-center text-gray-800 mb-12">Công Thức Nổi Bật</h3>
-                <div id="featured-recipes-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Featured Recipe Cards will be populated by JavaScript -->
-                </div>
                 
-                <!-- Load More Button for Featured Recipes -->
-                <div class="text-center mt-12">
-                    <button id="loadMoreFeatured" onclick="loadMoreFeaturedRecipes()" class="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-                        <span class="flex items-center gap-2">
-                            <span>Xem Thêm Công Thức</span>
-                            <span class="text-lg">👀</span>
-                        </span>
+                <div class="profile-stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="statRecipes">0</div>
+                        <div class="stat-label">Công thức</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="statLikes">0</div>
+                        <div class="stat-label">Lượt thích</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="statSaved">0</div>
+                        <div class="stat-label">Đã lưu</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="statFollowing">0</div>
+                        <div class="stat-label">Đang theo dõi</div>
+                    </div>
+                </div>
+
+                <div class="profile-tabs">
+                    <button class="tab-btn active" onclick="showProfileTab('my-recipes-tab')">
+                        <i class="fas fa-book"></i> Công thức đã chia sẻ
                     </button>
-                    <p class="text-gray-500 text-sm mt-2">Khám phá thêm nhiều món ngon khác!</p>
+                    <button class="tab-btn" onclick="showProfileTab('saved-recipes-tab')">
+                        <i class="fas fa-heart"></i> Công thức yêu thích
+                    </button>
                 </div>
-            </div>
-        </section>
-    </div>
 
-    <!-- Recipes Page -->
-    <div id="recipes-page" class="page-content hidden">
-        <section class="py-16 px-4">
-            <div class="max-w-7xl mx-auto">
-                <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">Tất Cả Công Thức</h2>
-                <div class="text-center text-gray-600 mb-12">
-                    <p class="text-lg">Khám phá kho tàng công thức phong phú từ cộng đồng</p>
-                    <p class="text-sm">Hơn 40 món ăn đa dạng từ khắp mọi miền</p>
-                </div>
-                
-                <!-- Simple Filter Panel -->
-                <div class="mb-8">
-                    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md p-6">
-                        <!-- Filter Row -->
-                        <div class="flex flex-wrap items-center gap-4 mb-4">
-                            <select id="typeFilter" onchange="applyAdvancedFilters()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500">
-                                <option value="">Tất cả loại món</option>
-                                <option value="Món mặn">🍖 Món mặn</option>
-                                <option value="Món chay">🥬 Món chay</option>
-                            </select>
-                            
-                            <select id="dishTypeFilter" onchange="applyAdvancedFilters()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500">
-                                <option value="">Tất cả phân loại</option>
-                                <option value="Món chính">🍽️ Món chính</option>
-                                <option value="Món phụ">🥗 Món phụ</option>
-                                <option value="Tráng miệng">🍮 Tráng miệng</option>
-                            </select>
-                            
-                            <select id="difficultyFilter" onchange="applyAdvancedFilters()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500">
-                                <option value="">Tất cả mức độ</option>
-                                <option value="Dễ">😊 Dễ</option>
-                                <option value="Trung bình">😐 Trung bình</option>
-                                <option value="Khó">😤 Khó</option>
-                            </select>
-                            
-                            <button onclick="clearAllFilters()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm font-medium transition-colors">
-                                🔄 Xóa Lọc
-                            </button>
+                <div class="tab-content">
+                    <div id="my-recipes-tab" class="tab-pane active">
+                        <div class="recipe-grid" id="profileMyRecipes">
+                            <!-- Công thức của người dùng sẽ được load ở đây -->
                         </div>
-
-
                     </div>
-                </div>
-
-                <div id="all-recipes-grid" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    <!-- All recipes will be populated here -->
-                </div>
-                
-                <div id="no-recipes-found" class="text-center text-gray-500 py-12 hidden">
-                    <div class="text-6xl mb-4">🔍</div>
-                    <h3 class="text-xl font-semibold mb-2">Không tìm thấy công thức nào</h3>
-                    <p>Hãy thử lọc theo danh mục khác hoặc tìm kiếm với từ khóa khác!</p>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Favorites Page -->
-    <div id="favorites-page" class="page-content hidden">
-        <section class="py-16 px-4">
-            <div class="max-w-7xl mx-auto">
-                <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">Công Thức Yêu Thích</h2>
-                <div class="text-center text-gray-600 mb-12">
-                    <p class="text-lg">Những món ăn bạn đã yêu thích</p>
-                    <p class="text-sm">Bộ sưu tập cá nhân của bạn</p>
-                </div>
-                
-                <!-- Simple Filter Panel -->
-                <div class="mb-8">
-                    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md p-6">
-                        <!-- Filter Row -->
-                        <div class="flex flex-wrap items-center gap-4 mb-4">
-                            <select id="favoritesTypeFilter" onchange="applyFavoritesFilters()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500">
-                                <option value="">Tất cả loại món</option>
-                                <option value="Món mặn">🍖 Món mặn</option>
-                                <option value="Món chay">🥬 Món chay</option>
-                            </select>
-                            
-                            <select id="favoritesDishTypeFilter" onchange="applyFavoritesFilters()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500">
-                                <option value="">Tất cả phân loại</option>
-                                <option value="Món chính">🍽️ Món chính</option>
-                                <option value="Món phụ">🥗 Món phụ</option>
-                                <option value="Tráng miệng">🍮 Tráng miệng</option>
-                            </select>
-                            
-                            <select id="favoritesDifficultyFilter" onchange="applyFavoritesFilters()" class="px-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500">
-                                <option value="">Tất cả mức độ</option>
-                                <option value="Dễ">😊 Dễ</option>
-                                <option value="Trung bình">😐 Trung bình</option>
-                                <option value="Khó">😤 Khó</option>
-                            </select>
-                            
-                            <button onclick="clearFavoritesFilters()" class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-sm font-medium transition-colors">
-                                🔄 Xóa Lọc
-                            </button>
+                    <div id="saved-recipes-tab" class="tab-pane">
+                        <div class="recipe-grid" id="profileSavedRecipes">
+                            <!-- Công thức đã lưu sẽ được load ở đây -->
                         </div>
                     </div>
                 </div>
-
-                <div id="favorites-grid" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    <!-- Favorites will be populated here -->
-                </div>
-                
-                <div id="no-favorites" class="text-center text-gray-500 py-12 hidden">
-                    <div class="text-6xl mb-4">💔</div>
-                    <h3 class="text-xl font-semibold mb-2">Chưa có món ăn yêu thích</h3>
-                    <p>Hãy khám phá và yêu thích những công thức ngon nhé!</p>
-                </div>
-                
-                <div id="no-favorites-filtered" class="text-center text-gray-500 py-12 hidden">
-                    <div class="text-6xl mb-4">🔍</div>
-                    <h3 class="text-xl font-semibold mb-2">Không tìm thấy món ăn yêu thích nào</h3>
-                    <p>Hãy thử lọc theo tiêu chí khác hoặc thêm món ăn vào danh sách yêu thích!</p>
-                </div>
             </div>
-        </section>
+        </div>
+    </section>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal" id="editProfileModal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Chỉnh sửa hồ sơ</h2>
+            <form id="editProfileForm">
+                <div class="form-group">
+                    <label for="editName">Họ và tên</label>
+                    <input type="text" id="editName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editBio">Giới thiệu bản thân</label>
+                    <textarea id="editBio" placeholder="Hãy giới thiệu đôi chút về bản thân..." rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editAvatar">Avatar (URL)</label>
+                    <input type="text" id="editAvatar" placeholder="https://example.com/avatar.jpg">
+                    <small>Nhập URL hình ảnh cho avatar của bạn</small>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-cancel" onclick="closeEditProfile()">Hủy</button>
+                    <button type="submit" class="btn">Cập nhật hồ sơ</button>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <!-- Rankings Page -->
-    <div id="rankings-page" class="page-content hidden">
-        <section class="py-16 px-4">
-            <div class="max-w-7xl mx-auto">
-                <h2 class="text-4xl font-bold text-center text-gray-800 mb-12">Bảng Xếp Hạng</h2>
-                <div class="text-center text-gray-600 mb-8">
-                    <p class="text-lg">Những công thức được đánh giá cao nhất</p>
-                    <p class="text-sm">Tự động sắp xếp theo điểm đánh giá và số lượt đánh giá</p>
-                </div>
-
-                <!-- Ranking Categories -->
-                <div class="flex justify-center mb-8">
-                    <div class="flex gap-2 bg-white rounded-lg p-1 shadow-md">
-                        <button onclick="filterRankings('all')" class="filter-btn active px-4 py-2 rounded-md text-sm font-medium transition-colors">Tổng Thể</button>
-                        <button onclick="filterRankings('week')" class="filter-btn px-4 py-2 rounded-md text-sm font-medium transition-colors">Tuần Này</button>
-                        <button onclick="filterRankings('month')" class="filter-btn px-4 py-2 rounded-md text-sm font-medium transition-colors">Tháng Này</button>
-                        <button onclick="filterRankings('trending')" class="filter-btn px-4 py-2 rounded-md text-sm font-medium transition-colors">Xu Hướng</button>
+    <!-- About Page -->
+    <section id="about" class="page-section">
+        <div class="container">
+            <div class="about-page">
+                <div class="about-content">
+                    <div class="about-section">
+                        <h2 class="section-title">Về CookVerse</h2>
+                        <p>CookVerse là cộng đồng chia sẻ công thức nấu ăn lớn nhất Việt Nam, nơi mọi người có thể khám phá, học hỏi và chia sẻ đam mê nấu nướng.</p>
                     </div>
-                </div>
-
-                <div id="rankings-list" class="max-w-4xl mx-auto space-y-4">
-                    <!-- Rankings will be populated here -->
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Recipe Detail Modal -->
-    <div id="recipeDetailModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm">
-        <div class="modal-content bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-            <div id="recipeHeader" class="h-64 relative overflow-hidden"> <!-- Updated: Removed gradient, added overflow-hidden for image -->
-                <img id="recipeImage" src="" alt="" class="w-full h-full object-cover"> <!-- Updated: Added img for real photo -->
-                <button onclick="closeRecipeDetail()" class="absolute top-4 right-4 w-10 h-10 bg-white bg-opacity-20 hover:bg-opacity-30 rounded-full flex items-center justify-center text-white text-xl transition-colors">
-                    ×
-                </button>
-            </div>
-            
-            <div class="p-8">
-                <div class="mb-8">
-                    <h2 id="recipeTitle" class="text-3xl font-bold text-gray-800 mb-4">Phở Bò Hà Nội</h2>
-                    <div class="flex flex-wrap gap-6 text-gray-600 mb-4">
-                        <span id="recipeTime">⏱️ 2 giờ</span>
-                        <span id="recipeServes">👥 4 người</span>
-                        <span id="recipeDifficulty">📊 Trung bình</span>
-                        <span id="recipeRating">⭐ 4.9 (124 đánh giá)</span>
-                    </div>
-                    <p id="recipeDescription" class="text-gray-700 leading-relaxed">Món phở truyền thống với nước dùng trong vắt, thịt bò tươi ngon</p>
-                </div>
-
-                <div class="flex items-center justify-between mb-8 p-4 bg-gray-50 rounded-lg">
-                    <div class="flex items-center space-x-3">
-                        <div id="authorAvatar" class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-lg">A</div>
-                        <div>
-                            <h4 class="font-semibold text-gray-800">Tác giả</h4>
-                            <p id="authorName" class="text-gray-600">Anh Tuấn</p>
-                        </div>
-                    </div>
-                    <div class="flex gap-3">
-                        <button onclick="toggleFavorite()" class="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-                            <span id="favoriteIcon">🤍</span>
-                            <span id="favoriteText">Yêu thích</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">🥘 Nguyên Liệu</h3>
-                        <ul id="ingredientsList" class="space-y-2 text-gray-700">
-                            <li class="flex items-center">
-                                <span class="w-2 h-2 bg-orange-500 rounded-full mr-3"></span>
-                                500g thịt bò
-                            </li>
-                            <li class="flex items-center">
-                                <span class="w-2 h-2 bg-orange-500 rounded-full mr-3"></span>
-                                200g bánh phở
-                            </li>
+                    
+                    <div class="about-section">
+                        <h3>Sứ Mệnh Của Chúng Tôi</h3>
+                        <p>Chúng tôi tin rằng nấu ăn không chỉ là kỹ năng mà còn là nghệ thuật kết nối mọi người. Sứ mệnh của CookVerse là tạo ra một không gian nơi mọi người có thể:</p>
+                        <ul style="margin-top: 1rem; padding-left: 2rem;">
+                            <li>Chia sẻ công thức gia đình và bí quyết nấu ăn</li>
+                            <li>Học hỏi từ cộng đồng những người yêu nấu ăn</li>
+                            <li>Kết nối với những người có cùng đam mê</li>
+                            <li>Khám phá ẩm thực đa dạng từ khắp nơi trên thế giới</li>
                         </ul>
                     </div>
-                </div>
-
-                <div class="mt-8">
-                    <h3 class="text-xl font-bold text-gray-800 mb-6">👨‍🍳 Cách Làm</h3>
-                    <div id="instructionsList" class="space-y-6">
-                        <div class="flex gap-4">
-                            <div class="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">1</div>
-                            <p class="text-gray-700 leading-relaxed">Chuẩn bị nguyên liệu</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Share Recipe Modal -->
-    <div id="shareModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm">
-        <div class="modal-content bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div class="p-8">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-3xl font-bold text-gray-800">Chia Sẻ Công Thức Mới</h2>
-                    <button onclick="closeShareModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
-                </div>
-                
-                <form id="shareRecipeForm" class="space-y-6">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Tên Món Ăn *</label>
-                        <input type="text" id="recipeName" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="VD: Phở Bò Hà Nội">
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Danh Mục *</label>
-                            <select id="recipeCategory" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
-                                <option value="">Chọn danh mục</option>
-                                <option value="Món Việt">Món Việt</option>
-                                <option value="Món Chay">Món Chay</option>
-                                <option value="Lẩu & Nướng">Lẩu & Nướng</option>
-                                <option value="Hải Sản">Hải Sản</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Thể Loại *</label>
-                            <select id="recipeType" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
-                                <option value="">Chọn thể loại</option>
-                                <option value="Món chay">Món chay</option>
-                                <option value="Món mặn">Món mặn</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="grid md:grid-cols-4 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Thời Gian Nấu *</label>
-                            <input type="text" id="cookingTime" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="VD: 30 phút">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Số Người Ăn *</label>
-                            <input type="text" id="servings" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="VD: 4 người">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Độ Khó *</label>
-                            <select id="difficulty" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
-                                <option value="">Chọn độ khó</option>
-                                <option value="Dễ">Dễ</option>
-                                <option value="Trung bình">Trung bình</option>
-                                <option value="Khó">Khó</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Loại Món *</label>
-                            <select id="dishType" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500">
-                                <option value="">Chọn loại món</option>
-                                <option value="Món chính">Món chính</option>
-                                <option value="Món phụ">Món phụ</option>
-                                <option value="Tráng miệng">Tráng miệng</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Mô Tả Ngắn *</label>
-                        <textarea id="description" required rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Mô tả ngắn gọn về món ăn..."></textarea>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Nguyên Liệu *</label>
-                        <div id="ingredientsList" class="space-y-2 mb-3">
-                            <div class="flex gap-2">
-                                <input type="text" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="VD: 500g thịt bò">
-                                <button type="button" onclick="removeIngredient(this)" class="px-3 py-2 text-red-500 hover:bg-red-50 rounded-lg">✕</button>
-                            </div>
-                        </div>
-                        <button type="button" onclick="addIngredient()" class="text-orange-500 hover:text-orange-600 font-medium">+ Thêm nguyên liệu</button>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Cách Làm *</label>
-                        <div id="instructionsList" class="space-y-3 mb-3">
-                            <div class="border border-gray-200 rounded-lg p-4">
-                                <div class="flex items-center gap-3 mb-3">
-                                    <span class="px-3 py-2 bg-orange-100 text-orange-600 rounded-lg font-bold min-w-[50px] text-center">Bước 1</span>
-                                    <button type="button" onclick="removeInstruction(this)" class="px-3 py-2 text-red-500 hover:bg-red-50 rounded-lg">✕</button>
+                    
+                    <div class="about-section">
+                        <h3>Đội Ngũ Của Chúng Tôi</h3>
+                        <div class="team-grid">
+                            <div class="team-member">
+                                <div class="team-avatar">
+                                    <i class="fas fa-user"></i>
                                 </div>
-                                <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" rows="3" placeholder="Mô tả chi tiết cách thực hiện bước này..."></textarea>
+                                <h4>Nguyễn Thanh Tú</h4>
+                                <p>Founder & CEO</p>
+                            </div>
+                            <div class="team-member">
+                                <div class="team-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <h4>Nguyễn Thành Nam</h4>
+                                <p>Head Chef</p>
+                            </div>
+                            <div class="team-member">
+                                <div class="team-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <h4>Phạm Minh Trọng</h4>
+                                <p>Community Manager</p>
+                            </div>
+                            <div class="team-member">
+                                <div class="team-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <h4>Nguyễn Trần Thanh Vân</h4>
+                                <p>Tech Lead</p>
+                            </div>
+                            <div class="team-member">
+                                <div class="team-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                                <h4>Nguyễn Ngọc Thanh Vy</h4>
+                                <p>Head Chef</p>
                             </div>
                         </div>
-                        <button type="button" onclick="addInstruction()" class="text-orange-500 hover:text-orange-600 font-medium">+ Thêm bước làm</button>
                     </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Tên Tác Giả *</label>
-                        <input type="text" id="authorName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Tên của bạn">
-                    </div>
-
-                    <div class="flex gap-4 pt-6">
-                        <button type="button" onclick="closeShareModal()" class="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-medium transition-colors">
-                            Hủy
-                        </button>
-                        <button type="submit" class="flex-1 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-medium transition-colors">
-                            Chia Sẻ Công Thức
-                        </button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Success Modal -->
-    <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm">
-        <div class="modal-content bg-white rounded-2xl max-w-md w-full p-8 text-center">
-            <div class="text-6xl mb-4">🎉</div>
-            <h3 class="text-2xl font-bold text-gray-800 mb-4">Chia Sẻ Thành Công!</h3>
-            <p class="text-gray-600 mb-6">Công thức của bạn đã được chia sẻ và sẽ xuất hiện trong danh sách sau khi được duyệt.</p>
-            <button onclick="closeSuccessModal()" class="w-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-medium transition-colors">
-                Đóng
-            </button>
+    <!-- Recipe Detail Page -->
+    <section id="recipe-detail" class="page-section">
+        <div class="container">
+            <div class="recipe-detail" id="recipeDetailContent">
+                <!-- Recipe detail will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>CookVerse</h3>
+                <p>Cộng đồng chia sẻ công thức nấu ăn lớn nhất Việt Nam. Nơi kết nối những người yêu thích ẩm thực.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên kết nhanh</h3>
+                <ul>
+                    <li><a href="#" onclick="showPage('home')">Trang chủ</a></li>
+                    <li><a href="#" onclick="showPage('recipes')">Công thức</a></li>
+                    <li><a href="#" onclick="showPage('community')">Cộng đồng</a></li>
+                    <li><a href="#" onclick="showPage('about')">Về chúng tôi</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Thể loại</h3>
+                <ul>
+                    <li><a href="#" onclick="filterByCategory('appetizers')">Món khai vị</a></li>
+                    <li><a href="#" onclick="filterByCategory('main-dishes')">Món chính</a></li>
+                    <li><a href="#" onclick="filterByCategory('desserts')">Tráng miệng</a></li>
+                    <li><a href="#" onclick="filterByCategory('vegetarian')">Món chay</a></li>
+                    <li><a href="#" onclick="filterByCategory('beverages')">Thức uống</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Kết nối với chúng tôi</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                    <li><a href="#"><i class="fab fa-pinterest"></i> Pinterest</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 CookVerse. Tất cả các quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <!-- Add Recipe Modal -->
+    <div class="modal" id="addRecipeModal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Đăng Công Thức Mới</h2>
+            <form id="recipeForm">
+                <div class="form-group">
+                    <label for="recipeName">Tên công thức</label>
+                    <input type="text" id="recipeName" required>
+                </div>
+                <div class="form-group">
+                    <label for="recipeDesc">Mô tả ngắn</label>
+                    <textarea id="recipeDesc" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="recipeTime">Thời gian nấu (phút)</label>
+                    <input type="number" id="recipeTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="recipeDifficulty">Độ khó</label>
+                    <select id="recipeDifficulty" required>
+                        <option value="Dễ">Dễ</option>
+                        <option value="Trung bình">Trung bình</option>
+                        <option value="Khó">Khó</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="recipeCategory">Danh mục</label>
+                    <select id="recipeCategory" required>
+                        <option value="appetizers">Món Khai Vị</option>
+                        <option value="main-dishes">Món Chính</option>
+                        <option value="desserts">Tráng Miệng</option>
+                        <option value="vegetarian">Món Chay</option>
+                        <option value="beverages">Thức Uống</option>
+                        <option value="eat-clean">Eat Clean</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Nguyên liệu</label>
+                    <div class="ingredient-list" id="ingredientList">
+                        <div class="ingredient-item">
+                            <input type="text" placeholder="Nguyên liệu và số lượng" required>
+                            <button type="button" class="remove-ingredient">-</button>
+                        </div>
+                    </div>
+                    <button type="button" class="add-ingredient" id="addIngredient">+ Thêm nguyên liệu</button>
+                </div>
+                <div class="form-group">
+                    <label for="recipeSteps">Các bước thực hiện</label>
+                    <textarea id="recipeSteps" placeholder="Mô tả chi tiết các bước thực hiện..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="recipeImage">Hình ảnh (URL)</label>
+                    <input type="text" id="recipeImage" placeholder="https://example.com/image.jpg">
+                </div>
+                <button type="submit" class="btn">Đăng công thức</button>
+            </form>
         </div>
     </div>
 
     <!-- Login Modal -->
-    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm">
-        <div class="modal-content bg-white rounded-2xl max-w-md w-full p-8">
-            <div class="text-center mb-6">
-                <h2 class="text-3xl font-bold text-gray-800 mb-2">Đăng Nhập</h2>
-                <p class="text-gray-600">Chào mừng bạn trở lại!</p>
-            </div>
-            
-            <form id="loginForm" class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                    <input type="email" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="your@email.com">
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Đăng Nhập</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
                 </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Mật khẩu</label>
-                    <input type="password" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="••••••••">
+                <div class="form-group">
+                    <label for="loginPassword">Mật khẩu</label>
+                    <input type="password" id="loginPassword" required>
                 </div>
-                
-                <div class="flex items-center justify-between">
-                    <label class="flex items-center">
-                        <input type="checkbox" class="rounded border-gray-300 text-orange-500 focus:ring-orange-500">
-                        <span class="ml-2 text-sm text-gray-600">Ghi nhớ đăng nhập</span>
-                    </label>
-                    <a href="#" class="text-sm text-orange-600 hover:text-orange-700">Quên mật khẩu?</a>
-                </div>
-                
-                <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-medium transition-colors">
-                    Đăng Nhập
-                </button>
+                <button type="submit" class="btn">Đăng nhập</button>
             </form>
-            
-            <div class="mt-6 text-center">
-                <p class="text-gray-600">Chưa có tài khoản? 
-                    <button onclick="switchToRegister()" class="text-orange-600 hover:text-orange-700 font-medium">Đăng ký ngay</button>
-                </p>
-            </div>
-            
-            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            <p style="text-align: center; margin-top: 1rem;">
+                Chưa có tài khoản? <a href="#" onclick="showRegisterModal()">Đăng ký ngay</a>
+            </p>
         </div>
     </div>
 
     <!-- Register Modal -->
-    <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm">
-        <div class="modal-content bg-white rounded-2xl max-w-md w-full p-8">
-            <div class="text-center mb-6">
-                <h2 class="text-3xl font-bold text-gray-800 mb-2">Đăng Ký</h2>
-                <p class="text-gray-600">Tạo tài khoản mới để bắt đầu!</p>
-            </div>
-            
-            <form id="registerForm" class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Họ và tên</label>
-                    <input type="text" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="Nguyễn Văn A">
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>Đăng Ký</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerName">Họ và tên</label>
+                    <input type="text" id="registerName" required>
                 </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                    <input type="email" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="your@email.com">
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required>
                 </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Mật khẩu</label>
-                    <input type="password" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="••••••••">
+                <div class="form-group">
+                    <label for="registerPassword">Mật khẩu</label>
+                    <input type="password" id="registerPassword" required minlength="6">
                 </div>
-                
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Xác nhận mật khẩu</label>
-                    <input type="password" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="••••••••">
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Xác nhận mật khẩu</label>
+                    <input type="password" id="registerConfirmPassword" required>
                 </div>
-                
-                <div class="flex items-center">
-                    <input type="checkbox" required class="rounded border-gray-300 text-orange-500 focus:ring-orange-500">
-                    <span class="ml-2 text-sm text-gray-600">Tôi đồng ý với <a href="#" class="text-orange-600 hover:text-orange-700">Điều khoản sử dụng</a></span>
-                </div>
-                
-                <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-medium transition-colors">
-                    Đăng Ký
-                </button>
+                <button type="submit" class="btn">Đăng ký</button>
             </form>
-            
-            <div class="mt-6 text-center">
-                <p class="text-gray-600">Đã có tài khoản? 
-                    <button onclick="switchToLogin()" class="text-orange-600 hover:text-orange-700 font-medium">Đăng nhập ngay</button>
-                </p>
-            </div>
-            
-            <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            <p style="text-align: center; margin-top: 1rem;">
+                Đã có tài khoản? <a href="#" onclick="showLoginModal()">Đăng nhập ngay</a>
+            </p>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-16 mt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
-                <!-- Logo & Description -->
-                <div class="md:col-span-1">
-                    <div class="mb-6">
-                        <h3 class="text-3xl font-black logo-text">
-                            <span class="bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">Cook</span><span class="bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">Book</span>
-                        </h3>
+    <!-- User Profile Page -->
+    <section id="user-profile" class="page-section">
+        <div class="container">
+            <div class="user-profile-page">
+                <h2 class="section-title">Hồ Sơ Cá Nhân</h2>
+                <div class="profile-content">
+                    <div class="profile-info">
+                        <div class="profile-avatar">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="profile-details">
+                            <h3 id="profileName"></h3>
+                            <p id="profileEmail"></p>
+                            <p>Tham gia từ: <span id="profileJoinDate"></span></p>
+                        </div>
                     </div>
-                    <p class="text-gray-300 mb-6 leading-relaxed">
-                        Nền tảng chia sẻ công thức nấu ăn hàng đầu Việt Nam. Khám phá, chia sẻ và yêu thích những món ăn ngon từ khắp mọi miền.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 bg-orange-500 hover:bg-orange-600 rounded-full flex items-center justify-center transition-colors">
-                            <span class="text-lg">📘</span>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-orange-500 hover:bg-orange-600 rounded-full flex items-center justify-center transition-colors">
-                            <span class="text-lg">📷</span>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-orange-500 hover:bg-orange-600 rounded-full flex items-center justify-center transition-colors">
-                            <span class="text-lg">🐦</span>
-                        </a>
-                        <a href="#" class="w-10 h-10 bg-orange-500 hover:bg-orange-600 rounded-full flex items-center justify-center transition-colors">
-                            <span class="text-lg">📺</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Quick Links -->
-                <div>
-                    <h4 class="text-lg font-bold mb-6 text-orange-400">Liên Kết Nhanh</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" onclick="showPage('home')" class="text-gray-300 hover:text-orange-400 transition-colors">🏠 Trang Chủ</a></li>
-                        <li><a href="#" onclick="showPage('recipes')" class="text-gray-300 hover:text-orange-400 transition-colors">📖 Công Thức</a></li>
-                        <li><a href="#" onclick="showPage('favorites')" class="text-gray-300 hover:text-orange-400 transition-colors">❤️ Yêu Thích</a></li>
-                        <li><a href="#" onclick="showPage('rankings')" class="text-gray-300 hover:text-orange-400 transition-colors">🏆 Xếp Hạng</a></li>
-                        <li><a href="#" onclick="showShareModal()" class="text-gray-300 hover:text-orange-400 transition-colors">✍️ Chia Sẻ Công Thức</a></li>
-                    </ul>
-                </div>
-
-                <!-- Categories -->
-                <div>
-                    <h4 class="text-lg font-bold mb-6 text-orange-400">Danh Mục Món Ăn</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" onclick="filterByCategory('Món Việt')" class="text-gray-300 hover:text-orange-400 transition-colors">🇻🇳 Món Việt</a></li>
-                        <li><a href="#" onclick="filterByCategory('Món Chay')" class="text-gray-300 hover:text-orange-400 transition-colors">🥬 Món Chay</a></li>
-                        <li><a href="#" onclick="filterByCategory('Hải Sản')" class="text-gray-300 hover:text-orange-400 transition-colors">🦐 Hải Sản</a></li>
-                        <li><a href="#" onclick="filterByCategory('Lẩu & Nướng')" class="text-gray-300 hover:text-orange-400 transition-colors">🔥 Lẩu & Nướng</a></li>
-                        <li><a href="#" onclick="quickFilter('quick')" class="text-gray-300 hover:text-orange-400 transition-colors">⚡ Món Nhanh</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact & Support -->
-                <div>
-                    <h4 class="text-lg font-bold mb-6 text-orange-400">Hỗ Trợ</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-gray-300 hover:text-orange-400 transition-colors">📞 Liên Hệ</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-orange-400 transition-colors">❓ Câu Hỏi Thường Gặp</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-orange-400 transition-colors">📋 Điều Khoản Sử Dụng</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-orange-400 transition-colors">🔒 Chính Sách Bảo Mật</a></li>
-                        <li><a href="#" class="text-gray-300 hover:text-orange-400 transition-colors">💡 Góp Ý</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Bottom Section -->
-            <div class="border-t border-gray-700 mt-12 pt-8">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <div class="text-gray-400 text-sm mb-4 md:mb-0">
-                        © 2024 CookBook. Tất cả quyền được bảo lưu. Made with ❤️ in Vietnam
-                    </div>
-                    <div class="flex items-center space-x-6 text-sm">
-                        <span class="text-gray-400">🌟 Hơn 10,000+ công thức</span>
-                        <span class="text-gray-400">👥 50,000+ thành viên</span>
-                        <span class="text-gray-400">⭐ 4.9/5 đánh giá</span>
+                    <div class="profile-stats">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statRecipes">0</div>
+                            <div class="stat-label">Công thức</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="statLikes">0</div>
+                            <div class="stat-label">Lượt thích</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="statSaved">0</div>
+                            <div class="stat-label">Đã lưu</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
+    </section>
 
-    <script>
-        // Updated sample recipe data with real image URLs (replaced emojis)
-        const recipes = [
-            {
-                id: 1,
-                name: "Phở Bò Hà Nội",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Trung bình",
-                dishType: "Món chính",
-                time: "2 giờ",
-                serves: "4 người",
-                rating: 4.9,
-                reviews: 124,
-                favorites: 89,
-                imageUrl: "https://fearlesseating.net/wp-content/uploads/2023/06/Ha-Noi-Pho.jpg", // Updated: Real image
-                description: "Món phở truyền thống với nước dùng trong vắt, thịt bò tươi ngon và bánh phở dai ngon.",
-                author: "Anh Tuấn",
-                ingredients: ["500g thịt bò", "200g bánh phở", "1 củ hành tây", "Gia vị phở"],
-                instructions: ["Ninh xương bò 3 tiếng", "Chuẩn bị bánh phở", "Thái thịt bò mỏng", "Trình bày và thưởng thức"]
-            },
-            {
-                id: 2,
-                name: "Bún Bò Huế",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Khó",
-                dishType: "Món chính",
-                time: "3 giờ",
-                serves: "6 người",
-                rating: 4.8,
-                reviews: 98,
-                favorites: 76,
-                imageUrl: "http://farm8.staticflickr.com/7457/9132698028_f54d5bcf96_b.jpg", // Updated: Real image
-                description: "Món bún đặc trưng của Huế với nước dùng cay nồng, thịt bò và chả cua.",
-                author: "Chị Hương",
-                ingredients: ["300g bún bò", "200g thịt bò", "100g chả cua", "Mắm ruốc"],
-                instructions: ["Nấu nước dùng", "Chuẩn bị nguyên liệu", "Trình bày tô bún", "Thưởng thức nóng"]
-            },
-            {
-                id: 3,
-                name: "Gỏi Cuốn Tôm Thịt",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Dễ",
-                dishType: "Món phụ",
-                time: "30 phút",
-                serves: "4 người",
-                rating: 4.7,
-                reviews: 156,
-                favorites: 134,
-                imageUrl: "https://bunbobae.com/wp-content/uploads/2021/03/spring-rolls-square.jpg", // Updated: Real image
-                description: "Món gỏi cuốn tươi mát với tôm, thịt heo và rau thơm, chấm nước mắm chua ngọt.",
-                author: "Cô Lan",
-                ingredients: ["Bánh tráng", "Tôm luộc", "Thịt heo luộc", "Rau thơm"],
-                instructions: ["Chuẩn bị nguyên liệu", "Cuốn bánh tráng", "Làm nước chấm", "Trình bày đẹp mắt"]
-            },
-            {
-                id: 4,
-                name: "Cơm Tấm Sài Gòn",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Trung bình",
-                dishType: "Món chính",
-                time: "1 giờ",
-                serves: "2 người",
-                rating: 4.6,
-                reviews: 89,
-                favorites: 67,
-                imageUrl: "https://upload.wikimedia.org/wikipedia/commons/b/b0/C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg", // Updated: Real image
-                description: "Cơm tấm thơm ngon với sườn nướng, chả trứng và nước mắm chua ngọt.",
-                author: "Anh Minh",
-                ingredients: ["Cơm tấm", "Sườn heo", "Trứng", "Đồ chua"],
-                instructions: ["Nướng sườn", "Chiên chả trứng", "Chuẩn bị cơm tấm", "Trình bày hoàn chỉnh"]
-            },
-            {
-                id: 5,
-                name: "Bánh Mì Thịt Nướng",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Dễ",
-                dishType: "Món phụ",
-                time: "45 phút",
-                serves: "2 người",
-                rating: 4.5,
-                reviews: 203,
-                favorites: 145,
-                imageUrl: "https://summerandspice.com/wp-content/uploads/2025/05/DSC_6336.jpg", // Updated: Real image
-                description: "Bánh mì Việt Nam với thịt nướng thơm lừng, pate và rau thơm tươi mát.",
-                author: "Chú Tám",
-                ingredients: ["Bánh mì", "Thịt heo", "Pate", "Rau thơm"],
-                instructions: ["Nướng thịt", "Chuẩn bị bánh mì", "Làm đồ chua", "Kẹp bánh mì"]
-            },
-            {
-                id: 6,
-                name: "Chả Cá Lã Vọng",
-                category: "Hải Sản",
-                type: "Món mặn",
-                difficulty: "Trung bình",
-                dishType: "Món chính",
-                time: "1.5 giờ",
-                serves: "4 người",
-                rating: 4.8,
-                reviews: 67,
-                favorites: 89,
-                imageUrl: "https://www.thefooddictator.com/wp-content/uploads/2022/05/chaca-1024x764.jpg", // Updated: Real image
-                description: "Món chả cá truyền thống Hà Nội với cá lăng tươi ngon và nghệ vàng.",
-                author: "Bà Năm",
-                ingredients: ["Cá lăng", "Nghệ tươi", "Thì là", "Bún"],
-                instructions: ["Ướp cá với nghệ", "Chiên chả cá", "Chuẩn bị rau thơm", "Trình bày và thưởng thức"]
-            },
-            {
-                id: 7,
-                name: "Lẩu Thái Hải Sản",
-                category: "Lẩu & Nướng",
-                type: "Món mặn",
-                difficulty: "Trung bình",
-                dishType: "Món chính",
-                time: "1 giờ",
-                serves: "6 người",
-                rating: 4.7,
-                reviews: 112,
-                favorites: 98,
-                imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/KEcKB6pt7TstlKm7wEdIZw/348s.jpg", // Updated: Real image
-                description: "Lẩu Thái chua cay với hải sản tươi ngon và rau củ đa dạng.",
-                author: "Anh Khoa",
-                ingredients: ["Tôm", "Cua", "Cá", "Rau củ", "Nước lẩu Thái"],
-                instructions: ["Nấu nước lẩu", "Chuẩn bị hải sản", "Sắp xếp rau củ", "Thưởng thức nóng hổi"]
-            },
-            {
-                id: 8,
-                name: "Bánh Xèo Miền Tây",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Khó",
-                dishType: "Món chính",
-                time: "2 giờ",
-                serves: "4 người",
-                rating: 4.9,
-                reviews: 87,
-                favorites: 123,
-                imageUrl: "https://vlstudies.com/wp-content/uploads/2023/06/cach-lam-banh-xeo-mien-tay.jpg", // Updated: Real image
-                description: "Bánh xèo giòn rụm với nhân tôm thịt, ăn kèm rau sống và nước chấm.",
-                author: "Cô Ba",
-                ingredients: ["Bột bánh xèo", "Tôm", "Thịt heo", "Giá đỗ"],
-                instructions: ["Pha bột bánh xèo", "Chuẩn bị nhân", "Đổ bánh", "Ăn kèm rau sống"]
-            },
-            {
-                id: 9,
-                name: "Canh Chua Cá Lóc",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Dễ",
-                dishType: "Món phụ",
-                time: "45 phút",
-                serves: "4 người",
-                rating: 4.4,
-                reviews: 76,
-                favorites: 54,
-                imageUrl: "https://i0.wp.com/vickypham.com/wp-content/uploads/2023/10/d89da-2023_09_28eosm57895.jpg", // Updated: Real image
-                description: "Canh chua truyền thống miền Nam với cá lóc tươi ngon và rau thơm.",
-                author: "Dì Sáu",
-                ingredients: ["Cá lóc", "Me", "Cà chua", "Thơm", "Rau thơm"],
-                instructions: ["Sơ chế cá", "Nấu nước canh", "Cho cá vào nấu", "Nêm nếm vừa ăn"]
-            },
-            {
-                id: 10,
-                name: "Tôm Rang Me",
-                category: "Hải Sản",
-                type: "Món mặn",
-                difficulty: "Dễ",
-                dishType: "Món chính",
-                time: "30 phút",
-                serves: "3 người",
-                rating: 4.6,
-                reviews: 134,
-                favorites: 167,
-                imageUrl: "https://beyondsweetandsavory.com/wp-content/uploads/2021/03/Vietnamese-tamarind-prawns-Vy-Tran-6-of-8-853x1280-1.jpg", // Updated: Real image
-                description: "Tôm rang me chua ngọt đậm đà, thơm ngon hấp dẫn.",
-                author: "Chị Linh",
-                ingredients: ["Tôm sú", "Me", "Đường", "Nước mắm"],
-                instructions: ["Sơ chế tôm", "Pha nước sốt me", "Rang tôm", "Trình bày đẹp mắt"]
-            },
-            {
-                id: 11,
-                name: "Đậu Hũ Sốt Cà Chua",
-                category: "Món Chay",
-                type: "Món chay",
-                difficulty: "Dễ",
-                dishType: "Món chính",
-                time: "25 phút",
-                serves: "3 người",
-                rating: 4.3,
-                reviews: 89,
-                favorites: 76,
-                imageUrl: "https://earthtoveg.com/wp-content/uploads/2023/08/viet-tofu-in-tomato-sauce-2.jpg", // Updated: Real image
-                description: "Món chay đơn giản với đậu hũ mềm và sốt cà chua đậm đà.",
-                author: "Cô Hạnh",
-                ingredients: ["Đậu hũ", "Cà chua", "Hành tây", "Gia vị chay"],
-                instructions: ["Chiên đậu hũ", "Làm sốt cà chua", "Xào chung", " Trang trí và thưởng thức"]
-            },
-            {
-                id: 12,
-                name: "Rau Muống Xào Tỏi",
-                category: "Món Chay",
-                type: "Món chay",
-                difficulty: "Dễ",
-                dishType: "Món phụ",
-                time: "15 phút",
-                serves: "4 người",
-                rating: 4.2,
-                reviews: 156,
-                favorites: 89,
-                imageUrl: "https://i0.wp.com/beyondsweetandsavory.com/wp-content/uploads/2023/08/Vietnamese-stir-fried-morning-glory-with-garlic-VyTran-5.jpg?resize=610%2C915&ssl=1", // Updated: Real image
-                description: "Rau muống xào tỏi giòn ngon, đơn giản mà bổ dưỡng.",
-                author: "Bác Tư",
-                ingredients: ["Rau muống", "Tỏi", "Dầu ăn", "Gia vị"],
-                instructions: ["Nhặt rau muống", "Băm tỏi", "Xào nhanh tay", "Nêm nếm vừa ăn"]
-            },
-            {
-                id: 13,
-                name: "Cà Ri Gà",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Trung bình",
-                dishType: "Món chính",
-                time: "1.5 giờ",
-                serves: "5 người",
-                rating: 4.7,
-                reviews: 98,
-                favorites: 112,
-                imageUrl: "https://assets.epicurious.com/photos/674e073f8e4746f65a3e0461/1:1/w_2560%2Cc_limit/150%2520chicken%2520curry%2520-%2520ca%2520ri%2520ga%2520copy.jpg", // Updated: Real image
-                description: "Cà ri gà thơm ngon với nước cốt dừa và gia vị đậm đà.",
-                author: "Chị Mai",
-                ingredients: ["Thịt gà", "Nước cốt dừa", "Cà ri", "Khoai tây"],
-                instructions: ["Ướp gà", "Nấu cà ri", "Cho gà vào ninh", "Ăn kèm bánh mì"]
-            },
-            {
-                id: 14,
-                name: "Nem Nướng Nha Trang",
-                category: "Lẩu & Nướng",
-                type: "Món mặn",
-                difficulty: "Khó",
-                dishType: "Món chính",
-                time: "2 giờ",
-                serves: "4 người",
-                rating: 4.8,
-                reviews: 67,
-                favorites: 134,
-                imageUrl: "https://s3-media0.fl.yelpcdn.com/bphoto/CFIeC-kFDZiotoX6syvgVg/348s.jpg", // Updated: Real image
-                description: "Nem nướng Nha Trang thơm lừng với thịt heo tươi ngon.",
-                author: "Anh Dũng",
-                ingredients: ["Thịt heo", "Tỏi", "Đường", "Nước mắm"],
-                instructions: ["Xay thịt", "Nêm gia vị", "Nặn nem", "Nướng than hồng"]
-            },
-            {
-                id: 15,
-                name: "Chè Đậu Xanh",
-                category: "Món Chay",
-                type: "Món chay",
-                difficulty: "Dễ",
-                dishType: "Tráng miệng",
-                time: "1 giờ",
-                serves: "6 người",
-                rating: 4.5,
-                reviews: 123,
-                favorites: 98,
-                imageUrl: "https://nolimitcooking.com/wp-content/uploads/2025/02/475198936_18057628586034633_8108664497724455736_n.jpg?w=1024", // Updated: Real image
-                description: "Chè đậu xanh mát lạnh, ngọt ngào, thích hợp cho ngày hè.",
-                author: "Bà Tám",
-                ingredients: ["Đậu xanh", "Đường", "Nước cốt dừa", "Lá dứa"],
-                instructions: ["Nấu đậu xanh", "Pha nước đường", "Trộn đều", "Làm lạnh và thưởng thức"]
-            },
-            {
-                id: 16,
-                name: "Bánh Flan",
-                category: "Món Chay",
-                type: "Món chay",
-                difficulty: "Trung bình",
-                dishType: "Tráng miệng",
-                time: "2 giờ",
-                serves: "8 người",
-                rating: 4.6,
-                reviews: 89,
-                favorites: 156,
-                imageUrl: "https://cinnamonsnail.com/wp-content/uploads/2023/06/banh-flan-09.jpg", // Updated: Real image
-                description: "Bánh flan mềm mịn với lớp caramel thơm ngon hấp dẫn.",
-                author: "Chị Nga",
-                ingredients: ["Trứng gà", "Sữa tươi", "Đường", "Vani"],
-                instructions: ["Làm caramel", "Pha hỗn hợp flan", "Hấp bánh", "Làm lạnh trước khi ăn"]
-            },
-            {
-                id: 17,
-                name: "Cua Rang Me",
-                category: "Hải Sản",
-                type: "Món mặn",
-                difficulty: "Trung bình",
-                dishType: "Món chính",
-                time: "45 phút",
-                serves: "4 người",
-                rating: 4.7,
-                reviews: 76,
-                favorites: 123,
-                imageUrl: "https://i0.wp.com/beyondsweetandsavory.com/wp-content/uploads/2021/05/Vietnamese-tamarind-crabs-Vy-Tran-14-of-15-853x1280-1.jpg?fit=853%2C1280&ssl=1", // Updated: Real image
-                description: "Cua rang me chua ngọt đậm đà, thịt cua tươi ngon.",
-                author: "Anh Hải",
-                ingredients: ["Cua biển", "Me", "Đường", "Tỏi"],
-                instructions: ["Sơ chế cua", "Pha nước sốt", "Rang cua", " Trang trí lá ngò"]
-            },
-            {
-                id: 18,
-                name: "Bánh Cuốn Hà Nội",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Khó",
-                dishType: "Món chính",
-                time: "2.5 giờ",
-                serves: "4 người",
-                rating: 4.9,
-                reviews: 134,
-                favorites: 167,
-                imageUrl: "https://files.catbox.moe/za4yk5.webp", // Updated: Real image
-                description: "Bánh cuốn mỏng tang với nhân thịt nấm thơm ngon.",
-                author: "Cô Hoa",
-                ingredients: ["Bột gạo", "Thịt heo", "Nấm mèo", "Hành khô"],
-                instructions: ["Pha bột bánh cuốn", "Làm nhân", "Tráng bánh", "Cuốn và chấm nước mắm"]
-            },
-            {
-                id: 19,
-                name: "Mì Quảng",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Khó",
-                dishType: "Món chính",
-                time: "3 giờ",
-                serves: "4 người",
-                rating: 4.8,
-                reviews: 98,
-                favorites: 145,
-                imageUrl: "https://i0.wp.com/vickypham.com/wp-content/uploads/2023/05/8faee-2023_04_28eosm56722.jpg", // Updated: Real image
-                description: "Mì Quảng đậm đà với tôm, thịt và trứng cút.",
-                author: "Chú Năm",
-                ingredients: ["Mì Quảng", "Tôm", "Thịt heo", "Trứng cút"],
-                instructions: ["Nấu nước dùng", "Chuẩn bị topping", "Trình bày tô mì", "Rắc đậu phộng rang"]
-            },
-            {
-                id: 20,
-                name: "Gà Nướng Lá Chuối",
-                category: "Lẩu & Nướng",
-                type: "Món mặn",
-                difficulty: "Trung bình",
-                dishType: "Món chính",
-                time: "2 giờ",
-                serves: "6 người",
-                rating: 4.6,
-                reviews: 87,
-                favorites: 134,
-                imageUrl: "https://dobbernationloves.com/wp-content/uploads/2022/08/Ga-Nuong-Vietnamese-Grilled-Chicken-10-500x375.jpeg", // Updated: Real image
-                description: "Gà nướng lá chuối thơm lừng, thịt mềm ngọt tự nhiên.",
-                author: "Anh Tài",
-                ingredients: ["Gà ta", "Lá chuối", "Sả", "Gừng"],
-                instructions: ["Ướp gà", "Gói lá chuối", "Nướng than hồng", "Thưởng thức nóng"]
-            },
-            {
-                id: 21,
-                name: "Bún Chả",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Trung bình",
-                dishType: "Món chính",
-                time: "1 giờ",
-                serves: "4 người",
-                rating: 4.8,
-                reviews: 150,
-                favorites: 120,
-                imageUrl: "https://www.recipetineats.com/uploads/2019/01/Vietnamese-Pork-Meatballs_6.jpg",
-                description: "Món bún chả với thịt nướng thơm lừng, ăn kèm bún và rau sống.",
-                author: "Chị Lan",
-                ingredients: ["500g thịt nạc vai", "2 thìa nước mắm", "2 thìa đường", "Tỏi băm", "Hành tím băm"],
-                instructions: ["Ướp thịt với gia vị", "Nướng thịt", "Làm nước chấm", "Trình bày với bún và rau"]
-            },
-            {
-                id: 22,
-                name: "Bò Lá Lốt",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Trung bình",
-                dishType: "Món phụ",
-                time: "45 phút",
-                serves: "4 người",
-                rating: 4.7,
-                reviews: 120,
-                favorites: 110,
-                imageUrl: "https://www.cooking-therapy.com/wp-content/uploads/2019/07/Ba-La-Lot-5.jpg",
-                description: "Thịt bò cuốn lá lốt nướng thơm ngon.",
-                author: "Anh Vũ",
-                ingredients: ["500g thịt bò xay", "Lá lốt", "Tỏi băm", "Hành tím băm", "Gia vị"],
-                instructions: ["Trộn nhân thịt", "Cuốn lá lốt", "Nướng chín", "Ăn kèm nước chấm"]
-            },
-            {
-                id: 23,
-                name: "Cá Kho Tộ",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Dễ",
-                dishType: "Món chính",
-                time: "1 giờ",
-                serves: "4 người",
-                rating: 4.6,
-                reviews: 140,
-                favorites: 130,
-                imageUrl: "https://www.wokandkin.com/wp-content/uploads/2020/12/Ca-Kho-To-Close-Up-saved-for-web.png",
-                description: "Cá kho tộ caramel hóa đậm đà.",
-                author: "Bác Hai",
-                ingredients: ["500g cá basa", "Nước mắm", "Đường", "Tỏi", "Hành"],
-                instructions: ["Ướp cá", "Kho với caramel", "Nêm nếm", "Ăn nóng với cơm"]
-            },
-            {
-                id: 24,
-                name: "Thịt Kho Tàu",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Trung bình",
-                dishType: "Món chính",
-                time: "2 giờ",
-                serves: "6 người",
-                rating: 4.7,
-                reviews: 160,
-                favorites: 140,
-                imageUrl: "https://delightfulplate.com/wp-content/uploads/2020/04/Vietnamese-Caramelized-Pork-Belly-Thit-Kho-Tau.jpg",
-                description: "Thịt kho tàu với trứng, đậm đà hương vị.",
-                author: "Cô Mai",
-                ingredients: ["500g thịt ba chỉ", "Trứng gà", "Nước dừa", "Nước mắm", "Đường"],
-                instructions: ["Ướp thịt", "Kho với nước dừa", "Thêm trứng", "Ninh nhừ"]
-            },
-            {
-                id: 25,
-                name: "Bún Thịt Nướng",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Trung bình",
-                dishType: "Món chính",
-                time: "1 giờ",
-                serves: "4 người",
-                rating: 4.8,
-                reviews: 130,
-                favorites: 150,
-                imageUrl: "https://www.cooking-therapy.com/wp-content/uploads/2023/08/Bun-Thit-Nuong-14.jpg",
-                description: "Bún thịt nướng với thịt heo ướp thơm ngon.",
-                author: "Anh Khoa",
-                ingredients: ["500g thịt heo", "Bún tươi", "Rau sống", "Gia vị ướp", "Nước chấm"],
-                instructions: ["Ướp thịt", "Nướng thịt", "Chuẩn bị rau", "Trộn với bún"]
-            },
-            {
-                id: 26,
-                name: "Gỏi Gà",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Dễ",
-                dishType: "Món phụ",
-                time: "30 phút",
-                serves: "4 người",
-                rating: 4.5,
-                reviews: 110,
-                favorites: 100,
-                imageUrl: "https://www.foodandwine.com/thmb/bbCswR2Sfh5-flPqMLGACS3Lx6k=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Vietnamese-Chicken-Salad-FT-RECIPE0311-910818cbf1e941fe814ea683db40c790.jpg",
-                description: "Gỏi gà giòn tan với rau củ và gà xé.",
-                author: "Chị Hoa",
-                ingredients: ["300g thịt gà", "Bắp cải", "Cà rốt", "Hành tây", "Nước mắm chua ngọt"],
-                instructions: ["Luộc gà xé phay", "Thái rau củ", "Trộn salad", "Rưới nước sốt"]
-            },
-            {
-                id: 27,
-                name: "Hủ Tiếu",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Khó",
-                dishType: "Món chính",
-                time: "2 giờ",
-                serves: "4 người",
-                rating: 4.7,
-                reviews: 125,
-                favorites: 135,
-                imageUrl: "https://www.wokandkin.com/wp-content/uploads/2020/04/Hu-Tieu-saved-for-web.png",
-                description: "Hủ tiếu với nước dùng thơm ngon, topping hải sản.",
-                author: "Bác Ba",
-                ingredients: ["Bánh hủ tiếu", "Xương heo", "Tôm", "Mực", "Gia vị"],
-                instructions: ["Ninh nước dùng", "Chuẩn bị topping", "Luộc bánh", "Trình bày tô"]
-            },
-            {
-                id: 28,
-                name: "Bánh Bèo",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Trung bình",
-                dishType: "Món phụ",
-                time: "1 giờ",
-                serves: "4 người",
-                rating: 4.6,
-                reviews: 115,
-                favorites: 105,
-                imageUrl: "https://www.savorysweetspoon.com/wp-content/uploads/2024/04/Banh-Beo-1x1-1.jpg",
-                description: "Bánh bèo Huế với topping tôm khô và hành phi.",
-                author: "Cô Hương",
-                ingredients: ["Bột gạo", "Tôm khô", "Hành lá", "Nước mắm", "Dầu ăn"],
-                instructions: ["Pha bột", "Hấp bánh", "Làm topping", "Rưới nước mắm"]
-            },
-            {
-                id: 29,
-                name: "Bánh Canh",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Trung bình",
-                dishType: "Món chính",
-                time: "1.5 giờ",
-                serves: "4 người",
-                rating: 4.5,
-                reviews: 100,
-                favorites: 90,
-                imageUrl: "https://scruffandsteph.com/wp-content/uploads/2019/11/Vietnamese-Fat-Noodle-Soup-Banh-Canh-1.jpg",
-                description: "Bánh canh với sợi bánh dai, nước dùng đậm đà.",
-                author: "Anh Minh",
-                ingredients: ["Bột bánh canh", "Thịt heo", "Tôm", "Hành lá", "Gia vị"],
-                instructions: ["Làm sợi bánh", "Ninh nước dùng", "Thêm topping", "Thưởng thức nóng"]
-            },
-            {
-                id: 30,
-                name: "Cơm Gà",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Dễ",
-                dishType: "Món chính",
-                time: "45 phút",
-                serves: "4 người",
-                rating: 4.6,
-                reviews: 135,
-                favorites: 125,
-                imageUrl: "https://delightfulplate.com/wp-content/uploads/2019/06/Com-Ga-Hoi-An-Vietnamese-Chicken-Rice.jpg",
-                description: "Cơm gà Hội An với cơm vàng thơm, gà xé.",
-                author: "Chị Nga",
-                ingredients: ["Gạo", "Thịt gà", "Nghệ", "Hành tây", "Gia vị"],
-                instructions: ["Nấu cơm với nước luộc gà", "Xé gà", "Trộn salad hành", "Ăn kèm nước sốt"]
-            },
-            {
-                id: 31,
-                name: "Bánh Tét",
-                category: "Món Việt",
-                type: "Món chay",
-                difficulty: "Khó",
-                dishType: "Tráng miệng",
-                time: "6 giờ",
-                serves: "8 người",
-                rating: 4.7,
-                reviews: 145,
-                favorites: 155,
-                imageUrl: "https://www.allrecipes.com/thmb/RoqKFlwrQLfSgBkSW5u2VIp2GjM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/284441_BanhTet_MFS_191-691a33e885fd49849c35234156126a27.jpg",
-                description: "Bánh tét nhân đậu xanh thịt mỡ, món Tết truyền thống.",
-                author: "Bà Tư",
-                ingredients: ["Nếp", "Đậu xanh", "Thịt mỡ", "Lá chuối", "Gia vị"],
-                instructions: ["Ngâm nếp và đậu", "Làm nhân", "Gói bánh", "Luộc bánh"]
-            },
-            {
-                id: 32,
-                name: "Chè Ba Màu",
-                category: "Món Chay",
-                type: "Món chay",
-                difficulty: "Dễ",
-                dishType: "Tráng miệng",
-                time: "30 phút",
-                serves: "4 người",
-                rating: 4.5,
-                reviews: 155,
-                favorites: 145,
-                imageUrl: "https://www.simplyrecipes.com/thmb/NqwohnB4Sp273qCWa85elqcNtOM=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Che-Ba-Mau-LEAD-1-2-9587418835df4389adbe62c1613ee09a.jpg",
-                description: "Chè ba màu mát lạnh với đậu đỏ, đậu xanh và thạch xanh.",
-                author: "Chị Linh",
-                ingredients: ["Đậu đỏ", "Đậu xanh", "Thạch pandan", "Nước cốt dừa", "Đá bào"],
-                instructions: ["Nấu đậu", "Làm thạch", "Làm nước cốt dừa", "Lớp chồng lên nhau"]
-            },
-            {
-                id: 33,
-                name: "Bánh Khọt",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Trung bình",
-                dishType: "Món phụ",
-                time: "1 giờ",
-                serves: "4 người",
-                rating: 4.6,
-                reviews: 125,
-                favorites: 115,
-                imageUrl: "https://www.wokandkin.com/wp-content/uploads/2021/02/Banh-Khot-Close-Up-saved-for-web.png",
-                description: "Bánh khọt giòn tan với topping tôm.",
-                author: "Anh Dũng",
-                ingredients: ["Bột gạo", "Tôm", "Dừa nạo", "Hành lá", "Nước mắm"],
-                instructions: ["Pha bột", "Đổ bánh", "Thêm topping", "Ăn kèm rau sống"]
-            },
-            {
-                id: 34,
-                name: "Xôi Xéo",
-                category: "Món Việt",
-                type: "Món chay",
-                difficulty: "Dễ",
-                dishType: "Món phụ",
-                time: "45 phút",
-                serves: "4 người",
-                rating: 4.5,
-                reviews: 105,
-                favorites: 95,
-                imageUrl: "https://delightfulplate.com/wp-content/uploads/2019/09/Vietnamese-Mung-Bean-Sticky-Rice-Xoi-Xeo-Hanoi.jpg",
-                description: "Xôi xéo với đậu xanh và hành phi thơm ngon.",
-                author: "Cô Hạnh",
-                ingredients: ["Nếp", "Đậu xanh", "Hành phi", "Mỡ hành", "Gia vị"],
-                instructions: ["Ngâm nếp", "Nấu xôi", "Làm đậu xanh", "Rắc hành phi"]
-            },
-            {
-                id: 35,
-                name: "Cao Lầu",
-                category: "Món Việt",
-                type: "Món mặn",
-                difficulty: "Khó",
-                dishType: "Món chính",
-                time: "2 giờ",
-                serves: "4 người",
-                rating: 4.7,
-                reviews: 140,
-                favorites: 130,
-                imageUrl: "https://assets.bonappetit.com/photos/57ad4c5b1b334044149755b0/master/w_940,h_671,c_limit/braised-spiced-pork-with-cao-lau-noodles.jpg",
-                description: "Cao lầu Hội An với sợi mì dai, thịt xá xíu.",
-                author: "Anh Tuấn",
-                ingredients: ["Sợi cao lầu", "Thịt xá xíu", "Giá đỗ", "Rau thơm", "Nước dùng"],
-                instructions: ["Làm thịt xá xíu", "Chuẩn bị rau", "Nấu nước dùng", "Trộn với mì"]
-            }
-        ];
-
-        // Current page state
-        let currentPage = 'home';
-        let currentRecipes = [...recipes];
-        let featuredRecipesShown = 6;
-        let favoriteRecipes = new Set(); // Store favorite recipe IDs
-
-        // Initialize the app
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load saved favorites from localStorage
-            const savedFavorites = localStorage.getItem('favoriteRecipes');
-            if (savedFavorites) {
-                favoriteRecipes = new Set(JSON.parse(savedFavorites));
-            }
-            
-            showPage('home');
-            loadFeaturedRecipes();
-        });
-
-        // Page navigation
-        function showPage(page) {
-            // Hide all pages
-            document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
-            
-            // Show selected page
-            document.getElementById(page + '-page').classList.remove('hidden');
-            currentPage = page;
-
-            // Load page-specific content
-            switch(page) {
-                case 'recipes':
-                    loadAllRecipes();
-                    break;
-                case 'favorites':
-                    loadFavoriteRecipes();
-                    break;
-                case 'rankings':
-                    loadRankings();
-                    break;
-            }
-
-            // Update navigation active state
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('text-orange-600', 'bg-orange-50');
-                link.classList.add('text-gray-600');
-            });
-        }
-
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            mobileMenu.classList.toggle('hidden');
-        }
-
-        // Load featured recipes for home page
-        function loadFeaturedRecipes() {
-            const grid = document.getElementById('featured-recipes-grid');
-            const featuredRecipes = recipes
-                .sort((a, b) => b.rating - a.rating)
-                .slice(0, featuredRecipesShown);
-            
-            grid.innerHTML = featuredRecipes.map(recipe => createRecipeCard(recipe)).join('');
-        }
-
-        // Load more featured recipes
-        function loadMoreFeaturedRecipes() {
-            featuredRecipesShown += 6;
-            if (featuredRecipesShown >= recipes.length) {
-                featuredRecipesShown = recipes.length;
-                document.getElementById('loadMoreFeatured').style.display = 'none';
-            }
-            loadFeaturedRecipes();
-        }
-
-        // Load all recipes for recipes page
-        function loadAllRecipes() {
-            const grid = document.getElementById('all-recipes-grid');
-            grid.innerHTML = currentRecipes.map(recipe => createRecipeCard(recipe)).join('');
-            
-            // Show/hide no results message
-            const noResults = document.getElementById('no-recipes-found');
-            if (currentRecipes.length === 0) {
-                noResults.classList.remove('hidden');
-            } else {
-                noResults.classList.add('hidden');
-            }
-        }
-
-        // Load favorite recipes (user's personal favorites)
-        let currentFavoriteRecipes = [];
-        
-        function loadFavoriteRecipes() {
-            const grid = document.getElementById('favorites-grid');
-            const noFavorites = document.getElementById('no-favorites');
-            const noFavoritesFiltered = document.getElementById('no-favorites-filtered');
-            
-            const userFavoriteRecipes = recipes.filter(recipe => favoriteRecipes.has(recipe.id));
-            
-            if (userFavoriteRecipes.length === 0) {
-                grid.innerHTML = '';
-                noFavorites.classList.remove('hidden');
-                noFavoritesFiltered.classList.add('hidden');
-                currentFavoriteRecipes = [];
-            } else {
-                noFavorites.classList.add('hidden');
-                currentFavoriteRecipes = [...userFavoriteRecipes];
-                applyFavoritesFilters();
-            }
-        }
-
-        // Apply filters to favorites
-        function applyFavoritesFilters() {
-            const typeFilter = document.getElementById('favoritesTypeFilter')?.value || '';
-            const dishTypeFilter = document.getElementById('favoritesDishTypeFilter')?.value || '';
-            const difficultyFilter = document.getElementById('favoritesDifficultyFilter')?.value || '';
-
-            let filteredRecipes = currentFavoriteRecipes.filter(recipe => {
-                return (!typeFilter || recipe.type === typeFilter) &&
-                       (!dishTypeFilter || recipe.dishType === dishTypeFilter) &&
-                       (!difficultyFilter || recipe.difficulty === difficultyFilter);
-            });
-
-            displayFavoriteRecipes(filteredRecipes);
-        }
-
-        // Display favorite recipes
-        function displayFavoriteRecipes(recipesToShow) {
-            const grid = document.getElementById('favorites-grid');
-            const noFavorites = document.getElementById('no-favorites');
-            const noFavoritesFiltered = document.getElementById('no-favorites-filtered');
-            
-            if (recipesToShow.length === 0) {
-                grid.innerHTML = '';
-                noFavorites.classList.add('hidden');
-                noFavoritesFiltered.classList.remove('hidden');
-            } else {
-                noFavorites.classList.add('hidden');
-                noFavoritesFiltered.classList.add('hidden');
-                grid.innerHTML = recipesToShow.map(recipe => createRecipeCard(recipe)).join('');
-            }
-        }
-
-
-
-        // Clear favorites filters
-        function clearFavoritesFilters() {
-            // Reset select filters
-            const selects = ['favoritesTypeFilter', 'favoritesDishTypeFilter', 'favoritesDifficultyFilter'];
-            selects.forEach(id => {
-                const element = document.getElementById(id);
-                if (element) element.value = '';
-            });
-
-            // Show all favorite recipes
-            displayFavoriteRecipes(currentFavoriteRecipes);
-        }
-
-        // Load rankings
-        function loadRankings() {
-            const list = document.getElementById('rankings-list');
-            const rankedRecipes = recipes
-                .sort((a, b) => b.rating - a.rating)
-                .slice(0, 10);
-            
-            list.innerHTML = rankedRecipes.map((recipe, index) => createRankingItem(recipe, index + 1)).join('');
-        }
-
-        // Updated: Create recipe card HTML with real image instead of emoji
-        function createRecipeCard(recipe) {
-            return `
-                <div class="recipe-card bg-white rounded-2xl shadow-lg overflow-hidden cursor-pointer" onclick="showRecipeDetail(${recipe.id})">
-                    <div class="h-48">
-                        <img src="${recipe.imageUrl}" alt="${recipe.name}" class="recipe-image"> <!-- Updated: Real image -->
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 mb-2">${recipe.name}</h3>
-                        <p class="text-gray-600 text-sm mb-4 line-clamp-2">${recipe.description}</p>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
-                            <span>⏱️ ${recipe.time}</span>
-                            <span>👥 ${recipe.serves}</span>
-                            <span>📊 ${recipe.difficulty}</span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center gap-1">
-                                <span class="text-yellow-400">⭐</span>
-                                <span class="font-semibold">${recipe.rating}</span>
-                                <span class="text-gray-500">(${recipe.reviews})</span>
-                            </div>
-                            <button onclick="event.stopPropagation(); toggleRecipeFavorite(${recipe.id})" class="text-red-500 hover:text-red-600 transition-colors">
-                                <span class="text-lg">${favoriteRecipes.has(recipe.id) ? '❤️' : '🤍'}</span>
-                            </button>
-                        </div>
-                    </div>
+    <!-- My Recipes Page -->
+    <section id="my-recipes" class="page-section">
+        <div class="container">
+            <div class="my-recipes-page">
+                <h2 class="section-title">Công Thức Của Tôi</h2>
+                <div class="recipe-grid" id="myRecipesGrid">
+                    <!-- Công thức của người dùng sẽ được load ở đây -->
                 </div>
-            `;
-        }
+            </div>
+        </div>
+    </section>
 
-        // Updated: Create ranking item HTML with real image instead of emoji
-        function createRankingItem(recipe, rank) {
-            const medalEmoji = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : '🏅';
-            
-            return `
-                <div class="ranking-item bg-white rounded-xl p-6 shadow-md cursor-pointer" onclick="showRecipeDetail(${recipe.id})">
-                    <div class="flex items-center gap-6">
-                        <div class="text-4xl font-bold text-orange-500 min-w-[60px] text-center">
-                            ${medalEmoji} ${rank}
-                        </div>
-                        <div class="w-16 h-16 overflow-hidden rounded-full"> <!-- Updated: Container for image -->
-                            <img src="${recipe.imageUrl}" alt="${recipe.name}" class="recipe-image"> <!-- Updated: Real image -->
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="text-xl font-bold text-gray-800 mb-1">${recipe.name}</h3>
-                            <p class="text-gray-600 text-sm mb-2">${recipe.description}</p>
-                            <div class="flex items-center gap-4 text-sm text-gray-500">
-                                <span>⏱️ ${recipe.time}</span>
-                                <span>👥 ${recipe.serves}</span>
-                                <span>📊 ${recipe.difficulty}</span>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <div class="flex items-center gap-1 mb-1">
-                                <span class="text-yellow-400">⭐</span>
-                                <span class="font-bold text-lg">${recipe.rating}</span>
-                            </div>
-                            <div class="text-sm text-gray-500">${recipe.reviews} đánh giá</div>
-                            <div class="text-sm text-red-500">❤️ ${recipe.favorites}</div>
-                        </div>
-                    </div>
+    <!-- Saved Recipes Page -->
+    <section id="saved-recipes" class="page-section">
+        <div class="container">
+            <div class="saved-recipes-page">
+                <h2 class="section-title">Công Thức Đã Lưu</h2>
+                <div class="recipe-grid" id="savedRecipesGrid">
+                    <!-- Công thức đã lưu sẽ được load ở đây -->
                 </div>
-            `;
-        }
+            </div>
+        </div>
+    </section>
 
-        // Simple filtering
-        function applyAdvancedFilters() {
-            const typeFilter = document.getElementById('typeFilter')?.value || '';
-            const dishTypeFilter = document.getElementById('dishTypeFilter')?.value || '';
-            const difficultyFilter = document.getElementById('difficultyFilter')?.value || '';
-
-            currentRecipes = recipes.filter(recipe => {
-                return (!typeFilter || recipe.type === typeFilter) &&
-                       (!dishTypeFilter || recipe.dishType === dishTypeFilter) &&
-                       (!difficultyFilter || recipe.difficulty === difficultyFilter);
-            });
-
-            if (currentPage === 'recipes') {
-                loadAllRecipes();
-            }
-        }
-
-        // Quick filters
-        function quickFilter(type) {
-            // Remove active class from all quick filter buttons
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Add active class to clicked button
-            event.target.classList.add('active');
-
-            switch(type) {
-                case 'popular':
-                    currentRecipes = recipes.filter(recipe => recipe.favorites > 100);
-                    break;
-                case 'easy':
-                    currentRecipes = recipes.filter(recipe => recipe.difficulty === 'Dễ');
-                    break;
-                case 'quick':
-                    currentRecipes = recipes.filter(recipe => 
-                        recipe.time.includes('phút') && parseInt(recipe.time) <= 30
-                    );
-                    break;
-                case 'healthy':
-                    currentRecipes = recipes.filter(recipe => recipe.type === 'Món chay');
-                    break;
-                case 'traditional':
-                    currentRecipes = recipes.filter(recipe => recipe.category === 'Món Việt');
-                    break;
-                default:
-                    currentRecipes = [...recipes];
-            }
-
-            if (currentPage === 'recipes') {
-                loadAllRecipes();
-            }
-        }
-
-        // Clear all filters
-        function clearAllFilters() {
-            // Reset select filters
-            const selects = ['typeFilter', 'dishTypeFilter', 'difficultyFilter'];
-            selects.forEach(id => {
-                const element = document.getElementById(id);
-                if (element) element.value = '';
-            });
-
-            // Remove active class from quick filter buttons
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-
-            // Reset recipes
-            currentRecipes = [...recipes];
-            
-            if (currentPage === 'recipes') {
-                loadAllRecipes();
-            }
-        }
-
-
-
-        // Filter rankings
-        function filterRankings(period) {
-            // Update active button
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            const list = document.getElementById('rankings-list');
-            let sortedRecipes = [...recipes];
-            
-            // Different sorting logic for different periods (simplified)
-            switch(period) {
-                case 'week':
-                    sortedRecipes = sortedRecipes.filter(recipe => recipe.reviews > 50);
-                    break;
-                case 'month':
-                    sortedRecipes = sortedRecipes.filter(recipe => recipe.reviews > 80);
-                    break;
-                case 'trending':
-                    sortedRecipes = sortedRecipes.filter(recipe => recipe.favorites > 120);
-                    break;
-            }
-            
-            sortedRecipes.sort((a, b) => b.rating - a.rating);
-            list.innerHTML = sortedRecipes.slice(0, 10).map((recipe, index) => createRankingItem(recipe, index + 1)).join('');
-        }
-
-        // Search functionality
-        function handleSearch() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-            
-            if (!searchTerm) {
-                currentRecipes = [...recipes];
-            } else {
-                currentRecipes = recipes.filter(recipe => 
-                    recipe.name.toLowerCase().includes(searchTerm) ||
-                    recipe.description.toLowerCase().includes(searchTerm) ||
-                    recipe.category.toLowerCase().includes(searchTerm) ||
-                    recipe.author.toLowerCase().includes(searchTerm) ||
-                    recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(searchTerm))
-                );
-            }
-
-            // If we're on recipes page, update the display
-            if (currentPage === 'recipes') {
-                loadAllRecipes();
-            } else {
-                // If we're on home page and there's a search, go to recipes page
-                if (searchTerm) {
-                    showPage('recipes');
-                }
-            }
-        }
-
-        function handleSearchKeyPress(event) {
-            if (event.key === 'Enter') {
-                handleSearch();
-            }
-        }
-
-        function handleSearchInput(event) {
-            // Optional: implement real-time search as user types
-            // For now, we'll keep it simple and only search on Enter or button click
-        }
-
-        // Updated: Recipe detail modal with real image
-        function showRecipeDetail(recipeId) {
-            const recipe = recipes.find(r => r.id === recipeId);
-            if (!recipe) return;
-
-            currentRecipeId = recipeId;
-
-            // Update modal content
-            document.getElementById('recipeImage').src = recipe.imageUrl; // Updated: Set real image src
-            document.getElementById('recipeImage').alt = recipe.name; // Updated: Alt text for accessibility
-            document.getElementById('recipeTitle').textContent = recipe.name;
-            document.getElementById('recipeTime').textContent = `⏱️ ${recipe.time}`;
-            document.getElementById('recipeServes').textContent = `👥 ${recipe.serves}`;
-            document.getElementById('recipeDifficulty').textContent = `📊 ${recipe.difficulty}`;
-            document.getElementById('recipeRating').textContent = `⭐ ${recipe.rating} (${recipe.reviews} đánh giá)`;
-            document.getElementById('recipeDescription').textContent = recipe.description;
-            document.getElementById('authorName').textContent = recipe.author;
-            document.getElementById('authorAvatar').textContent = recipe.author.charAt(0).toUpperCase();
-            
-            // Update favorite button in modal
-            const favoriteIcon = document.getElementById('favoriteIcon');
-            const favoriteText = document.getElementById('favoriteText');
-            if (favoriteRecipes.has(recipeId)) {
-                favoriteIcon.textContent = '❤️';
-                favoriteText.textContent = 'Đã yêu thích';
-            } else {
-                favoriteIcon.textContent = '🤍';
-                favoriteText.textContent = 'Yêu thích';
-            }
-
-            // Update ingredients list
-            const ingredientsList = document.getElementById('ingredientsList');
-            ingredientsList.innerHTML = recipe.ingredients.map(ingredient => `
-                <li class="flex items-center">
-                    <span class="w-2 h-2 bg-orange-500 rounded-full mr-3"></span>
-                    ${ingredient}
-                </li>
-            `).join('');
-
-            // Update instructions list
-            const instructionsList = document.getElementById('instructionsList');
-            instructionsList.innerHTML = recipe.instructions.map((instruction, index) => `
-                <div class="flex gap-4">
-                    <div class="w-8 h-8 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0">${index + 1}</div>
-                    <p class="text-gray-700 leading-relaxed">${instruction}</p>
-                </div>
-            `).join('');
-
-            // Show modal
-            document.getElementById('recipeDetailModal').classList.remove('hidden');
-        }
-
-        function closeRecipeDetail() {
-            document.getElementById('recipeDetailModal').classList.add('hidden');
-        }
-
-        // Toggle favorite in modal
-        let currentRecipeId = null;
-        
-        function toggleFavorite() {
-            if (!currentRecipeId) return;
-            
-            const icon = document.getElementById('favoriteIcon');
-            const text = document.getElementById('favoriteText');
-            
-            if (favoriteRecipes.has(currentRecipeId)) {
-                // Remove from favorites
-                favoriteRecipes.delete(currentRecipeId);
-                icon.textContent = '🤍';
-                text.textContent = 'Yêu thích';
-            } else {
-                // Add to favorites
-                favoriteRecipes.add(currentRecipeId);
-                icon.textContent = '❤️';
-                text.textContent = 'Đã yêu thích';
-                icon.classList.add('heart-pulse');
-                setTimeout(() => icon.classList.remove('heart-pulse'), 600);
-            }
-            
-            // Update all recipe cards
-            if (currentPage === 'home') {
-                loadFeaturedRecipes();
-            } else if (currentPage === 'recipes') {
-                loadAllRecipes();
-            } else if (currentPage === 'favorites') {
-                loadFavoriteRecipes();
-            }
-            
-            // Save to localStorage
-            localStorage.setItem('favoriteRecipes', JSON.stringify([...favoriteRecipes]));
-        }
-
-        function toggleRecipeFavorite(recipeId) {
-            const button = event.target;
-            
-            if (favoriteRecipes.has(recipeId)) {
-                // Remove from favorites
-                favoriteRecipes.delete(recipeId);
-                button.textContent = '🤍';
-            } else {
-                // Add to favorites
-                favoriteRecipes.add(recipeId);
-                button.textContent = '❤️';
-                button.classList.add('heart-pulse');
-                setTimeout(() => button.classList.remove('heart-pulse'), 600);
-            }
-            
-            // Update favorites page if currently viewing it
-            if (currentPage === 'favorites') {
-                loadFavoriteRecipes();
-            }
-            
-            // Save to localStorage
-            localStorage.setItem('favoriteRecipes', JSON.stringify([...favoriteRecipes]));
-        }
-
-        // Share modal functions
-        function showShareModal() {
-            document.getElementById('shareModal').classList.remove('hidden');
-        }
-
-        function closeShareModal() {
-            document.getElementById('shareModal').classList.add('hidden');
-            document.getElementById('shareRecipeForm').reset();
-            
-            // Reset ingredients and instructions to default
-            document.getElementById('ingredientsList').innerHTML = `
-                <div class="flex gap-2">
-                    <input type="text" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="VD: 500g thịt bò">
-                    <button type="button" onclick="removeIngredient(this)" class="px-3 py-2 text-red-500 hover:bg-red-50 rounded-lg">✕</button>
-                </div>
-            `;
-            
-            document.getElementById('instructionsList').innerHTML = `
-                <div class="border border-gray-200 rounded-lg p-4">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="px-3 py-2 bg-orange-100 text-orange-600 rounded-lg font-bold min-w-[50px] text-center">Bước 1</span>
-                        <button type="button" onclick="removeInstruction(this)" class="px-3 py-2 text-red-500 hover:bg-red-50 rounded-lg">✕</button>
-                    </div>
-                    <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" rows="3" placeholder="Mô tả chi tiết cách thực hiện bước này..."></textarea>
-                </div>
-            `;
-        }
-
-        // Add ingredient
-        function addIngredient() {
-            const container = document.getElementById('ingredientsList');
-            const newIngredient = document.createElement('div');
-            newIngredient.className = 'flex gap-2';
-            newIngredient.innerHTML = `
-                <input type="text" class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" placeholder="VD: 500g thịt bò">
-                <button type="button" onclick="removeIngredient(this)" class="px-3 py-2 text-red-500 hover:bg-red-50 rounded-lg">✕</button>
-            `;
-            container.appendChild(newIngredient);
-        }
-
-        // Remove ingredient
-        function removeIngredient(button) {
-            const container = document.getElementById('ingredientsList');
-            if (container.children.length > 1) {
-                button.parentElement.remove();
-            }
-        }
-
-        // Add instruction
-        function addInstruction() {
-            const container = document.getElementById('instructionsList');
-            const stepNumber = container.children.length + 1;
-            const newInstruction = document.createElement('div');
-            newInstruction.className = 'border border-gray-200 rounded-lg p-4';
-            newInstruction.innerHTML = `
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="px-3 py-2 bg-orange-100 text-orange-600 rounded-lg font-bold min-w-[50px] text-center">Bước ${stepNumber}</span>
-                    <button type="button" onclick="removeInstruction(this)" class="px-3 py-2 text-red-500 hover:bg-red-50 rounded-lg">✕</button>
-                </div>
-                <textarea class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500" rows="3" placeholder="Mô tả chi tiết cách thực hiện bước này..."></textarea>
-            `;
-            container.appendChild(newInstruction);
-        }
-
-        // Remove instruction
-        function removeInstruction(button) {
-            const container = document.getElementById('instructionsList');
-            if (container.children.length > 1) {
-                button.closest('.border').remove();
-                // Update step numbers
-                Array.from(container.children).forEach((child, index) => {
-                    const stepSpan = child.querySelector('span');
-                    stepSpan.textContent = `Bước ${index + 1}`;
-                });
-            }
-        }
-
-        // Handle form submission
-        document.getElementById('shareRecipeForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Collect form data
-            const formData = {
-                name: document.getElementById('recipeName').value,
-                category: document.getElementById('recipeCategory').value,
-                type: document.getElementById('recipeType').value,
-                time: document.getElementById('cookingTime').value,
-                serves: document.getElementById('servings').value,
-                difficulty: document.getElementById('difficulty').value,
-                dishType: document.getElementById('dishType').value,
-                description: document.getElementById('description').value,
-                author: document.getElementById('authorName').value,
-                ingredients: Array.from(document.querySelectorAll('#ingredientsList input')).map(input => input.value).filter(val => val.trim()),
-                instructions: Array.from(document.querySelectorAll('#instructionsList textarea')).map(textarea => textarea.value).filter(val => val.trim())
-            };
-
-            // Validate required fields
-            if (!formData.name || !formData.category || !formData.type || !formData.time || 
-                !formData.serves || !formData.difficulty || !formData.dishType || 
-                !formData.description || !formData.author || 
-                formData.ingredients.length === 0 || formData.instructions.length === 0) {
-                alert('Vui lòng điền đầy đủ thông tin!');
-                return;
-            }
-
-            // Here you would typically send the data to a server
-            console.log('Recipe submitted:', formData);
-            
-            // Show success modal
-            closeShareModal();
-            showSuccessModal();
-        });
-
-        // Success modal functions
-        function showSuccessModal() {
-            document.getElementById('successModal').classList.remove('hidden');
-        }
-
-        function closeSuccessModal() {
-            document.getElementById('successModal').classList.add('hidden');
-        }
-
-        // Auth modal functions
-        function showLoginModal() {
-            document.getElementById('loginModal').classList.remove('hidden');
-        }
-
-        function closeLoginModal() {
-            document.getElementById('loginModal').classList.add('hidden');
-            document.getElementById('loginForm').reset();
-        }
-
-        function showRegisterModal() {
-            document.getElementById('registerModal').classList.remove('hidden');
-        }
-
-        function closeRegisterModal() {
-            document.getElementById('registerModal').classList.add('hidden');
-            document.getElementById('registerForm').reset();
-        }
-
-        function switchToRegister() {
-            closeLoginModal();
-            showRegisterModal();
-        }
-
-        function switchToLogin() {
-            closeRegisterModal();
-            showLoginModal();
-        }
-
-        // Handle login form submission
-        document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Here you would typically send login data to server
-            console.log('Login attempt');
-            
-            // For demo purposes, just close modal and show success
-            closeLoginModal();
-            alert('Đăng nhập thành công! (Demo)');
-        });
-
-        // Handle register form submission
-        document.getElementById('registerForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const password = e.target.querySelector('input[type="password"]').value;
-            const confirmPassword = e.target.querySelectorAll('input[type="password"]')[1].value;
-            
-            if (password !== confirmPassword) {
-                alert('Mật khẩu xác nhận không khớp!');
-                return;
-            }
-            
-            // Here you would typically send registration data to server
-            console.log('Registration attempt');
-            
-            // For demo purposes, just close modal and show success
-            closeRegisterModal();
-            alert('Đăng ký thành công! (Demo)');
-        });
-
-        // Close modals when clicking outside
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('backdrop-blur-sm')) {
-                closeRecipeDetail();
-                closeShareModal();
-                closeSuccessModal();
-                closeLoginModal();
-                closeRegisterModal();
-            }
-        });
-
-        // Filter by category (for footer links)
-        function filterByCategory(category) {
-            // Reset filters first
-            clearAllFilters();
-            
-            // Apply category filter
-            currentRecipes = recipes.filter(recipe => recipe.category === category);
-            
-            // Go to recipes page
-            showPage('recipes');
-        }
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9888dc0584e425e5',t:'MTc1OTQ1Njk2OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    <script src="script.js"></script>
+</body>
 </html>
