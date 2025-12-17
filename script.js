@@ -3,12 +3,95 @@
 const recipes = [
     {
         id: 1,
+        title: "Chả Tôm Cuộn Rong Biển Bánh Tráng",
+        description: "Món chả tôm cuộn rong biển bánh tráng giòn ngon, hấp dẫn và dễ làm tại nhà.",
+        image: "https://img-global.cpcdn.com/recipes/98f7021e6848c54a/240x320cq80/photo.jpg",
+        time: 120,
+        difficulty: "Trung bình",
+        category: "appetizers",
+        ingredients: ["200g tôm lột sẵn", "Vài miếng bánh tráng mỏng", "Vài miếng rong biển loại cuộn kimbap", "Hành lá", "Gia vị: hạt nêm, tiêu"],
+        steps: [
+            "Tôm bóc vỏ bỏ chỉ. Để đông lạnh vài giờ. Lấy ra cho vào máy xay nhuyễn, trộn với đầu hành lá cắt nhỏ, tỏi băm (đã phi thơm càng tốt), 1 mcf hạt nêm (hoặc chỉ muối và đường), 1 ít tiêu xay, 1 mcf dầu ăn. Trộn đều. Đeo bao tay nhồi cho đến khi hỗn hợp kết dính, bốc lên rồi thẩy xuống thố làm vài lần để chả dai. Dính tay thì cho xíu nước hoặc dầu vào bao tay rồi trộn tiếp",
+            "Đặt tấm rong biển lên dĩa, múc chả lên trải đều khắp mặt rong biển rồi lấy miếng bánh tráng hình vuông cùng kích cỡ phủ lên mặt chả. Gấp làm đôi (theo mặt rong biển). Dùng kéo cắt thành thanh dài hoặc vuông tuỳ ý.",
+            "Bắc chảo dầu lên, dầu nóng cho chả vô chiên. Chả rất nhanh chín nên canh trở mặt liền tay nếu không rất dễ khét nhé. Chiên vàng đều 2 mặt rồi vớt ra để lên giấy thấm dầu",
+            "Ăn không chấm tương ớt hoặc cuốn rau sống chấm nước mắm chua ngọt cũng ngon nhé"
+        ],
+        likes: 12,
+        authorId: 1,
+        createdAt: "2025-05-10"
+    },
+    {
+        id: 2,
+        title: "Súp Hải Sản",
+        description: "Món súp hải sản thơm ngon, bổ dưỡng với hương vị đậm đà từ các loại hải sản tươi sống.",
+        image: "https://cdn.tgdd.vn/Files/2020/02/07/1234859/cach-nau-sup-hai-san-thom-ngon-bo-duong-cho-ca-gia-dinh-202203151808152700.jpg",
+        time: 45,
+        difficulty: "Dễ",
+        category: "appetizers",
+        ingredients: ["2 trái bắp", "100g hành tím", "100g nấm", "100g mực", "200g tôm", "200g cá thác lác", "15 quả trứng cút", "2 muống canh bột bắp", "Gia vị: 2 muỗng hạt nêm, 1/2 muống đường, tiêu xay (tùy thích), dầu ăn"],
+        steps: [
+            "Rửa sạch tất cả các nguyên liệu với nước, để cho ráo nước.",
+            "Mực ta sẽ cắt hạt lựu, tôm lột bỏ vỏ, sau đó cũng cắt hạt lựu như mực, nấm rơm và hành tím thì cắt thành những lát mỏng. Sau đó, lấy 1 hành tím đem băm nhuyễn.",
+            "Cho vào tô tôm, mực cùng với 2 muỗng hạt nêm và một ít tiêu. Sau đó, trộn đều lên và ướp trong khoảng 15 phút.",
+            "Đem bắp đi lột bỏ vỏ, sau đó, cắt lấy phần hạt. Lưu ý, các bạn hãy giữ lại phần cùi và bẻ nó làm đôi nhé. Còn bột bắp thì ta sẽ cho vào đó nửa chén nước và khuấy cho tan hoàn toàn.",
+            "Bắc nồi nước lên bếp, sau đó cho trứng cút vào luộc tầm phút thì tắt bếp.",
+            "Cho dầu ăn vào chảo, sau đó cho hành phi cắt lát mỏng vào, phi vàng thơm thì vớt ra. Phần dầu còn dư thì ta tiếp tục cho hành phi băm nhuyễn vào và cũng phi thơm lên. Sau đó, cho tôm, mực, nấm rơm vào đảo đều khoảng 4 phút.",
+            "Bắc lên bếp 1,5 lít nước, cho bắp và cùi vào, đậy nắp lại rồi nấu cho sôi lên khoảng 5 phút. Sau đó, vớt cùi bắp ra, cho phần hỗn hợp vừa xào vô, khuấy đều lên, đợi cho phần nước này sôi thì nấu thêm tầm 5 phút nữa. thêm 2 muỗng hạt nêm cùng 1/2 muỗng đường vào, nêm nếm lại cho vừa ăn.",
+            "Đập 2 quả trứng gà bỏ vào trong ray và cho chảy từ từ xuống súp, đồng thời, cho trứng cút lột vỏ vào luôn, khuấy đều",
+            "Thưởng thức súp hải sản nóng cùng với hành phi và tiêu xay lên trên."
+        ],
+        likes: 33,
+        authorId: 1,
+        createdAt: "2024-09-16"
+    },
+    {
+        id: 3,
+        title: "Tôm Cuộn Khoai Tây",
+        description: "Món tôm cuộn khoai tây giòn ngon, hấp dẫn và dễ làm tại nhà.",
+        image: "https://cdn.tgdd.vn/2021/07/CookProduct/tomcuonkhoaitay-1200x676.jpg",
+        time: 120,
+        difficulty: "Trung bình",
+        category: "appetizers",
+        ingredients: ["200g tôm tươi", "300g khoai tây", "50g bột chiến giòn", "1/2 chén dầu ăn", "Gia vị: muối, tiêu"],
+        steps: [
+            "Sơ chế tôm, lột vỏ, cắt bớt phần đầu tôm và để lại đuôi tôm. Sau đó rửa sạch để ráo nước và ướp 1 ít tiêu trong 5 phút.",
+            "Khoai tây gọt vỏ, rửa sạch và cắt thành từng que dài giống như hình dạng của tôm. Ngâm khoai tây trong nước muối loãng khoảng 10-30 phút để khoai không bị thâm đen.",
+            "Đem khoai tây ra rửa lại với nước sạch và để ráo. Sau đó, lấy từng que khoai tây cuộn quanh con tôm sao cho phần đuôi tôm lòi ra ngoài.",
+            "Chuẩn bị bột chiên giòn theo hướng dẫn trên bao bì. Nhúng từng cuộn tôm khoai tây vào bột chiên giòn sao cho bột phủ đều quanh cuộn tôm.",
+            "Bắc chảo dầu lên bếp, đun nóng dầu rồi cho từng cuộn tôm khoai tây vào chiên ở lửa vừa đến khi vàng giòn đều các mặt. Vớt ra để lên giấy thấm dầu.",
+            "Thưởng thức tôm cuộn khoai tây khi còn nóng với tương ớt hoặc sốt mayonnaise."
+        ],
+        likes: 25,
+        authorId: 1,
+        createdAt: "2025-08-20"
+    },
+    {
+        id: 4,
+        title: "Mực Chiên Giòn",
+        description: "Món mực chiên giòn thơm ngon, dễ làm tại nhà.",
+        image: "https://cdn.tgdd.vn/Files/2019/08/31/1193499/cach-lam-muc-chien-gion-chien-xu-gion-thom-ngon-gion-dai-202205241518584464.jpg",
+        time: 50,
+        difficulty: "Dễ",
+        category: "appetizers",
+        ingredients: ["300g mực ống", "250g bột chiên giòn", "Hành là", "Gia vị: muối, đường, hạt nêm, ớt bột"],
+        steps: [
+            "Sơ chế mực, rửa sạch, cắt thành từng miếng nhỏ. Sau đó, ướp mực với một ít muối và tiêu trong 10 phút.",
+            "Chuẩn bị bột chiên giòn theo hướng dẫn trên bao bì. Nhúng từng miếng mực vào bột chiên giòn sao cho bột phủ đều quanh miếng mực.",
+            "Bắc chảo dầu lên bếp, đun nóng dầu rồi cho từng miếng mực vào chiên ở lửa vừa đến khi vàng giòn đều các mặt. Vớt ra để lên giấy thấm dầu.",
+            "Thưởng thức mực chiên giòn khi còn nóng với tương ớt hoặc sốt mayonnaise."
+        ],
+        likes: 25,
+        authorId: 3,
+        createdAt: "2024-08-24"
+    },
+    {
+        id: 5,
         title: "Trứng Cuộn Kiểu Nhật",
         description: "Món trứng cuộn ngọt ngào, mềm mịn theo phong cách Nhật Bản, hoàn hảo cho bữa sáng.",
         image: "https://cdn.tgdd.vn/Files/2021/08/24/1377557/bi-quyet-lam-mon-com-cuon-trung-nhat-ban-omurice-thanh-cong-ngay-lan-dau-202201171407344977.jpg",
         time: 30,
         difficulty: "Dễ",
-        category: "appetizers",
+        category: "main-dishes",
         ingredients: ["2 quả trứng gà", "1 thìa cà phê đường", "1 thìa cà phê nước tương", "1 thìa cà phê Mirin", "Dầu ăn"],
         steps: [
             "Đánh tan trứng trong một tô nhỏ. Thêm đường, nước tương và Mirin vào, khuấy đều cho đến khi hòa quyện.",
@@ -19,10 +102,70 @@ const recipes = [
         ],
         likes: 42,
         authorId: 2,
-        createdAt: "2023-01-15"
+        createdAt: "2025-01-15"
     },
     {
-        id: 2,
+        id: 6,
+        title: "Canh Mồng Tơi Mướp Nấu Tôm Thịt",
+        description: "Món canh mồng tơi và mướp nấu với tôm thịt, thơm ngon và bổ dưỡng.",
+        image: "https://afamilycdn.com/150157425591193600/2024/5/28/edit-20160517anktmoncanh208-3534c-17168839788091508298013.jpeg",
+        time: 25,
+        difficulty: "Dễ",
+        category: "main-dishes",
+        ingredients: ["1 bó rau mồng tơi", "1 trái mướp", "100g thịt xay", "100g tép", "Gia vị: muối, hạt nêm, bột ngọt"],
+        steps: [
+            "Tép rửa sạch, cho vào nồi nước cùng với thịt xay nấu sôi.",
+            "Rau nhặt rửa sạch, cắt nhỏ mướp thành khúc vừa ăn.",
+            "Đun nước sôi và cho rau, mướp vào nấu chín.",
+            "Nêm muối, hạt nêm, cuối cùng cho thêm ít tiêu xay",
+            "Để nguội một chút rồi thưởng thức."
+        ],
+        likes: 25,
+        authorId: 2,
+        createdAt: "2025-01-18"
+    },
+    {
+        id: 7,
+        title: "Gỏi Đu Đủ Tôm Thịt",
+        description: "Món gỏi đu đủ và tôm thịt, giòn ngon và bổ dưỡng.",
+        image: "https://img-global.cpcdn.com/recipes/cdf40f784ef2b484/600x852f0.5_0.5_1.0q80/g%E1%BB%8Fi-du-d%E1%BB%A7-tom-th%E1%BB%8Bt-recipe-main-photo.webp",
+        time: 35,
+        difficulty: "Trung bình",
+        category: "main-dishes",
+        ingredients: ["200g thịt luộc", "200g tôm tươi", "1/2 trái đu đủ (khoảng 500g)", "4 muỗng nước mắm", "4 muỗng đường", "4 muỗng nước cốt chanh", "4 tép tỏi băm", "3 trái ớt băm, 10g rau thơm và 30g lạc rang"],
+        steps: [
+            "Thịt luộc cắt lát, cho lên chảo đảo với 1 muỗng nước mắm và 1 muỗng đường cho thấm vị.",
+            "Tôm luộc chín, bóc vỏ, để ráo.",
+            "Đu đủ bào thành sợi, ngâm nước đá 10 phút cho giòn và vớt ra để ráo.",
+            "Giã tỏi, ớt rồi pha nước mắm, đường, chanh thành nước trộn gỏi.",
+            "Trộn đu đủ, thịt, tôm với nước mắm trộn gỏi, thêm rau răm, lạc rang, đảo đều và thưởng thức."
+        ],
+        likes: 33,
+        authorId: 2,
+        createdAt: "2025-05-28"
+    },
+    {
+        id: 8,
+        title: "Gà Kho Gừng",
+        description: "Món gà kho gừng thơm ngon, đậm đà và bổ dưỡng.",
+        image: "https://cdn.tgdd.vn/2021/03/CookProduct/0-1200x676-6.jpg",
+        time: 36,
+        difficulty: "Trung bình",
+        category: "main-dishes",
+        ingredients: ["500g thịt gà", "Gừng, tỏi và ớt", "Gia vị: nước mắm, muối, đường, tiêu, hạt nên, tương ớt, nước màu"],
+        steps: [
+            "Gà rửa sạch, chặt miếng vừa ăn. Gừng cạo vỏ, thái sợi. Tỏi đập dập, băm nhỏ.",
+            "Ướp thịt với nước mắm, tiêu, tương ớt, nước màu, hạt nêm và tỏi trong khoảng 15 phút.",
+            "Làm nóng chảo, cho ít dầu ăn rồi phi thơm tỏi. Cho thịt gà vào xào săn.",
+            "Thêm nước xâm xấp mặt gà, đun sôi rồi hạ lửa nhỏ kho trong 20 phút.",
+            "Khi nước gần cạn, thêm gừng và ớt, đảo đều. Rắc tiêu rồi tắt bếp."
+        ],
+        likes: 50,
+        authorId: 3,
+        createdAt: "2025-11-06"
+    },
+    {
+        id: 9,
         title: "Phở Gà Truyền Thống",
         description: "Phở gà thơm ngon với nước dùng trong veo, thịt gà mềm và hương vị đậm đà.",
         image: "https://cdn.zsoft.solutions/poseidon-web/app/media/uploaded-files/200823-cach-lam-pho-ga-buffet-poseidon.jpg",
@@ -42,7 +185,7 @@ const recipes = [
         createdAt: "2023-02-20"
     },
     {
-        id: 3,
+        id: 10,
         title: "Pizza Tự Làm",
         description: "Pizza với đế bánh giòn tan, phô mai kéo sợi và topping tươi ngon theo sở thích.",
         image: "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
@@ -62,7 +205,7 @@ const recipes = [
         createdAt: "2023-03-10"
     },
     {
-        id: 4,
+        id: 11,
         title: "Salad Rau Củ Tươi",
         description: "Salad giòn ngon với các loại rau củ tươi, sốt chua ngọt hấp dẫn.",
         image: "https://ausimex.com.vn/wp-content/uploads/2024/04/cach-lam-salad-rau-tron-giam-can-01.jpg",
@@ -81,7 +224,7 @@ const recipes = [
         createdAt: "2023-04-05"
     },
     {
-        id: 5,
+        id: 12,
         title: "Sinh Tố Cải Bó Xôi",
         description: "Sinh tố bổ dưỡng từ táo và bó xôi, tốt cho sức khỏe và làm đẹp da.",
         image: "https://cdn.tgdd.vn/2020/09/CookProduct/1-1200x676-31.jpg",
@@ -100,7 +243,65 @@ const recipes = [
         createdAt: "2023-05-12"
     },
     {
-        id: 6,
+        id: 13,
+        title: "Matcha Sữa Dừa",
+        description: "Matcha sữa dừa thơm ngon, dễ làm tại nhà.",
+        image: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS-_KWIaJ6PTCPWjxQPiSgr1gzqfFv699jDWVeqvZRAUzjACsXU",
+        time: 15,
+        difficulty: "Dễ",
+        category: "beverages",
+        ingredients: ["1/2 thìa bột matcha", "100ml nước cốt dừa", "100ml sữa tươi không đường", "Trân châu đen", "Sữa đặc", "Đường", "Đá viên"],
+        steps: [
+            "Cho 50ml sữa tươi không đường cùng 1/2 muỗng bột matcha vào chén. Tiếp theo, bạn trộn đều hỗn hợp.",
+            "Thêm 100ml nước cốt dừa, 1-2 muỗng sữa đặc và 1-2 muỗng đường vào chén matcha. Khuấy đều cho đến khi hỗn hợp hòa quyện.",
+            "Thêm đá viên vào ly, sau đó rót hỗn hợp matcha sữa dừa lên trên.",
+            "Thêm trân châu đen vào ly và thưởng thức."
+        ],
+        likes: 52,
+        authorId: 3,
+        createdAt: "2024-10-10"
+    },
+    {
+        id: 14,
+        title: "Sinh Tố Dâu Tây",
+        description: "Sinh tố dâu tây thơm ngon, dễ làm tại nhà.",
+        image: "https://dodoto.vn/wp-content/uploads/2024/01/cach-lam-sinh-to-dau-dodoto.vn_.jpg",
+        time: 25,
+        difficulty: "Dễ",
+        category: "beverages",
+        ingredients: ["6-10 trái dâu tây", "2 muỗng sữa đặc", "150ml sữa tươi", "Đá bào"],
+        steps: [
+            "Đem dâu tây rửa sạch, bỏ cuống và cắt làm đôi.",
+            "Cho tất cả nguyên liệu vào máy xay sinh tố.",
+            "Xay nhuyễn cho đến khi hỗn hợp mịn.",
+            "Đổ ra ly và thưởng thức ngay."
+        ],
+        likes: 24,
+        authorId: 2,
+        createdAt: "2024-12-10"
+    },
+    {
+        id: 15,
+        title: "Milo Dầm",
+        description: "Milo dầm thơm ngon, dễ làm tại nhà.",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT97P0U7YgWpU6AXKTIRZQtU_CDG65-W7FgRg&s",
+        time: 25,
+        difficulty: "Dễ",
+        category: "beverages",
+        ingredients: ["140g bột milo", "580ml sữa tươi không đường", "70g socola chip", "100ml sốt socola", "Bánh snack socola", "Bánh quế", "Hạt điều", "Đá bào"],
+        steps: [
+            "Cho vào nồi 100g bột milo, 500ml sữa không đường, bắt lên bếp, nấu ở lửa nhỏ vừa cho tan bột milo. Khuấy đều tay để hỗn hợp không bị cháy khét dưới đáy nồi. Khi hỗn hợp sôi lăn tăn thì tắt bếp, để nguội.",
+            "Sau đó cho vào trong một cái khây hoặc bọc để vào trong ngăn đá để đông trong 4 - 5 tiếng, rồi lấy ra giã mịn.",
+            "Cho đá bào vào ly, múc milo đã giã mịn lên trên.",
+            "Rưới sốt socola lên trên, thêm socola chip, bánh snack socola, bánh quế và hạt điều tùy thích.",
+            "Thưởng thức ngay."
+        ],
+        likes: 42,
+        authorId: 2,
+        createdAt: "2025-11-19"
+    },
+    {
+        id: 16,
         title: "Bánh Flan Caramel",
         description: "Bánh flan mềm mịn với lớp caramen ngọt đắng hấp dẫn.",
         image: "https://cdn-media.sforum.vn/storage/app/media/wp-content/uploads/2023/11/cach-lam-caramen-thumbnail.jpg",
@@ -120,7 +321,66 @@ const recipes = [
         likes: 71,
         authorId: 1,
         createdAt: "2023-06-18"
-    }
+    },
+    {
+        id: 17,
+        title: "Chè Vải Hạt Sen",
+        description: "Chè vải hạt sen thanh mát, giải nhiệt mùa hè.",
+        image: "https://cdn.tgdd.vn/Files/2017/07/04/999563/cach-nau-che-vai-hat-sen-ngon-202207121412146552.jpg",
+        time: 50,
+        difficulty: "Dễ",
+        category: "desserts",
+        ingredients: ["200g hạt sen", "300g vải thiều", "50g đường cát trắng"],
+        steps: [
+            "Hạt sen rửa sạch, tách bỏ tim sen. Vải thiều lột vỏ, tách bỏ hạt.",
+            "Nấu hạt sen với nước đến khi mềm, thêm đường vào khuấy đều.",
+            "Khi hạt sen chín, cho vải thiều vào nấu thêm 5 phút.",
+            "Tắt bếp, để nguội và thưởng thức."
+        ],
+        likes: 71,
+        authorId: 3,
+        createdAt: "2024-02-13"
+    },
+    {
+        id: 18,
+        title: "Bánh Bông Lan",
+        description: "Bánh bông lan mềm mịn, thơm ngon với lớp đậu xanh và nước cốt dừa béo ngậy.",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAGLXa66b2_UbP7aTBnzSzDbsS61jFS7xEVQ&s",
+        time: 130,
+        difficulty: "Dễ",
+        category: "desserts",
+        ingredients: ["5 quả trứng gà (55g/quả)", "85g bột mì thường", "50ml dầu", "50ml sữa tươi không đường", "85g đường", "1/2 muỗng nước cốt chanh", "1/2 muỗng vanilla"],
+        steps: [
+            "Trứng tách lòng đỏ và lòng trắng, để riêng",
+            "Lòng đỏ + 15 gr đường + vanilla cho vào âu dùng phới lồng khuấy tan mịn, sau đó cho sữa và dầu vào khuấy chung. Cuối cùng rây bột mì vào khuấy mịn. Lòng trắng + nước cốt chanh cho vào âu, dùng máy đánh 40 giây, sau đó cho từ từ đường vào tăng tốc độ đánh 3-4 phút để lòng trắng bông mịn, nhấc máy thấy lòng trắng có chóp là được.",
+            "Cho 1/2 lòng trắng vào âu lòng đỏ dùng phới trộn nhẹ theo 1 chiều, khi trộn đều thì đổ âu lòng đỏ này vào âu lòng trắng còn lại tiếp tục trộn để tất cả hòa trộn với nhau.",
+            "Đổ hỗn hợp vào khuôn đã lót giấy chống dính, gõ nhẹ khuôn cho bột đều và không có bọt khí. Nướng ở 160 độ C trong 40-45 phút (lò đã làm nóng trước).",
+            "Lấy bánh ra khỏi lò, để nguội 10 phút rồi lấy bánh ra khỏi khuôn, để nguội hoàn toàn trên rack.",
+            "Thưởng thức bánh cùng trà hoặc cà phê."
+        ],
+        likes: 41,
+        authorId: 3,
+        createdAt: "2024-01-11"
+    },
+    {
+        id: 19,
+        title: "Kem Dưa Hấu Sữa Chua",
+        description: "Kem dưa hấu sữa chua mát lạnh, thơm ngon và dễ làm tại nhà.",
+        image: "https://cdn.tgdd.vn/Files/2021/08/09/1374104/cach-lam-kem-dua-hau-sua-chua-thom-ngon-mat-lanh-202108092025031214.jpg",
+        time: 50,
+        difficulty: "Dễ",
+        category: "desserts",
+        ingredients: ["2 miếng dưa hấu", "1 hộp sữa chua", "1/2 quả chanh", "1 ít lá bạc hà", "1 muỗng mật ong", "Khuôn làm kem"],
+        steps: [
+            "Gọt vỏ rồi cắt thành từng miếng nhỏ và loại bỏ phần hạt bên trong.",
+            "Cho dưa hấu vào máy xay sinh tố, thêm sữa chua, nước cốt chanh và mật ong vào xay nhuyễn.",
+            "Đổ hỗn hợp vào khuôn làm kem, cắm que kem vào giữa và để vào ngăn đá tủ lạnh ít nhất 4 giờ.",
+            "Lấy kem ra khỏi khuôn, trang trí với lá bạc hà và thưởng thức."
+        ],
+        likes: 71,
+        authorId: 3,
+        createdAt: "2025-03-10"
+    },
 ];
 
 const categories = {
@@ -1670,3 +1930,4 @@ document.addEventListener('DOMContentLoaded', function() {
     setupModals();
     setupSearchListeners();
 });
+
