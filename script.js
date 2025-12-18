@@ -1,6 +1,7 @@
 // ==================== DỮ LIỆU VÀ BIẾN TOÀN CỤC ====================
 
 const recipes = [
+    /* ===============================MÓN CHÍNH=============================== */
     {
         id: 1,
         title: "Chả Tôm Cuộn Rong Biển Bánh Tráng",
@@ -20,6 +21,7 @@ const recipes = [
         authorId: 1,
         createdAt: "2025-05-10"
     },
+    
     {
         id: 2,
         title: "Súp Hải Sản",
@@ -44,6 +46,7 @@ const recipes = [
         authorId: 1,
         createdAt: "2024-09-16"
     },
+    
     {
         id: 3,
         title: "Tôm Cuộn Khoai Tây",
@@ -65,6 +68,7 @@ const recipes = [
         authorId: 1,
         createdAt: "2025-08-20"
     },
+    
     {
         id: 4,
         title: "Mực Chiên Giòn",
@@ -84,6 +88,7 @@ const recipes = [
         authorId: 3,
         createdAt: "2024-08-24"
     },
+    
     {
         id: 5,
         title: "Trứng Cuộn Kiểu Nhật",
@@ -104,6 +109,7 @@ const recipes = [
         authorId: 2,
         createdAt: "2025-01-15"
     },
+    
     {
         id: 6,
         title: "Canh Mồng Tơi Mướp Nấu Tôm Thịt",
@@ -124,6 +130,7 @@ const recipes = [
         authorId: 2,
         createdAt: "2025-01-18"
     },
+    
     {
         id: 7,
         title: "Gỏi Đu Đủ Tôm Thịt",
@@ -144,6 +151,7 @@ const recipes = [
         authorId: 2,
         createdAt: "2025-05-28"
     },
+    
     {
         id: 8,
         title: "Gà Kho Gừng",
@@ -164,6 +172,7 @@ const recipes = [
         authorId: 3,
         createdAt: "2025-11-06"
     },
+    
     {
         id: 9,
         title: "Phở Gà Truyền Thống",
@@ -184,6 +193,7 @@ const recipes = [
         authorId: 3,
         createdAt: "2023-02-20"
     },
+    
     {
         id: 10,
         title: "Pizza Tự Làm",
@@ -204,6 +214,8 @@ const recipes = [
         authorId: 1,
         createdAt: "2023-03-10"
     },
+    
+    /* ===============================EAT CLEAN=============================== */
     {
         id: 11,
         title: "Salad Rau Củ Tươi",
@@ -223,8 +235,72 @@ const recipes = [
         authorId: 2,
         createdAt: "2023-04-05"
     },
+    
     {
         id: 12,
+        title: "Cơm Gạo Lứt",
+        description: "Cơm gạo lứt thơm ngon, bổ dưỡng và tốt cho sức khỏe.",
+        image: "https://cdn2.fptshop.com.vn/unsafe/1920x0/filters:format(webp):quality(75)/2023_10_29_638342154203476782_cach-nau-com-gao-lut.png",
+        time: 45,
+        difficulty: "Dễ",
+        category: "eat-clean",
+        ingredients: ["Gạo lứt (1 chén)", "Nước (1 chén)"],
+        steps: [
+            "Rửa sạch gạo lứt dưới nước lạnh để loại bỏ bụi bẩn và tạp chất.",
+            "Cho gạo lứt và nước vào nồi, đun sôi rồi giảm lửa, ninh khoảng 45 phút cho đến khi gạo chín mềm.",
+            "Múc cơm ra bát, dùng kèm rau củ hoặc các món ăn khác."
+        ],
+        likes: 30,
+        authorId: 2,
+        createdAt: "2023-04-04"
+    },
+    
+    {
+        id: 13,
+        title: "Trứng Cuộn Cơm Cá Ngừ",
+        description: "Trứng cuộn cơm cá ngừ thơm ngon, bổ dưỡng và dễ làm tại nhà.",
+        image: "https://cdn.tgdd.vn/2021/03/CookRecipe/GalleryStep/lam-trung-cuon-ca-ngu-1.jpg",
+        time: 45,
+        difficulty: "Dễ",
+        category: "eat-clean",
+        ingredients: ["Cơm", "Cá ngừ đóng hộp", "Sốt mayonnaise", "Rong biển"],
+        steps: [
+            "Cho cá ngừ ra ngăn khô, ắt thật khô để tách lượng dầu và nước trong hộp ra, rồi cho cá vào tô 3 muỗng canh sốt mayonnaise, trộn đều.",
+            "Đập trứng, nêm 1 ít muối rồi đánh đều. Sau đó, gấp đôi rong biển lại, sau đó dùng kéo cắt rong biển thành các sợi cỡ 1 lóng tay.",
+            "Làm nóng chảo chống dính, cho 1 ít dầu ăn vào, đổ trứng vào chiên mỏng. Khi trứng chín, cho cơm lên trên mặt trứng, trải đều cơm ra.",
+            "Trải đều hỗn hợp cá ngừ lên trên mặt cơm, rắc rong biển lên trên.",
+            "Cuộn trứng lại thành hình trụ, cắt thành từng khoanh vừa ăn.",
+            "Thưởng thức ngay."
+        ],
+        likes: 31,
+        authorId: 2,
+        createdAt: "2024-04-23"
+    },
+    
+    {
+        id: 14,
+        title: "Cơm Cà Ri Ức Gà Nhật",
+        description: "Cơm cà ri ức gà Nhật thơm ngon, bổ dưỡng và dễ làm tại nhà.",
+        image: "https://img-global.cpcdn.com/recipes/28c6ed10b3721fbb/680x781cq80/c%C6%A1m-ca-ri-ga-nh%E1%BA%ADt-b%E1%BA%A3n-recipe-main-photo.jpg",
+        time: 35,
+        difficulty: "Dễ",
+        category: "eat-clean",
+        ingredients: ["Cơm gạo lứt", "Viên cà ri Nhật (2-4 viên)", "1/2 củ hành tây", "Ức gà, 1 củ cà rốt và 1/2 củ khoai tây"],
+        steps: [
+            "Cà rốt, hành tây, khoai tây cắt thành miếng vừa ăn. Ức gà rửa sạch, cắt miếng vừa ăn.",
+            "Cho ức gà, hành tây, cà rốt, khoai tây vào nồi đảo đều tay.",
+            "Cho 400ml nước vào nồi, vặn nhỏ lửa nấu trong khoảng 15-20 phút",
+            "Thả viên cà ri vào nồi, khuấy nhẹ đến khi cà ri tan ra. Để lửa nhỏ, đun thêm khoảng 10 phút đến khi nước sốt hơi đặc và sánh.",
+            "Sau khi cà ri sánh đặc thì múc ra khay, chan lên cơm khi thưởng thức."
+        ],
+        likes: 69,
+        authorId: 1,
+        createdAt: "2024-12-31"
+    },
+    
+    /* ===============================THỨC UỐNG=============================== */
+    {
+        id: 15,
         title: "Sinh Tố Cải Bó Xôi",
         description: "Sinh tố bổ dưỡng từ táo và bó xôi, tốt cho sức khỏe và làm đẹp da.",
         image: "https://cdn.tgdd.vn/2020/09/CookProduct/1-1200x676-31.jpg",
@@ -242,8 +318,9 @@ const recipes = [
         authorId: 3,
         createdAt: "2023-05-12"
     },
+    
     {
-        id: 13,
+        id: 16,
         title: "Matcha Sữa Dừa",
         description: "Matcha sữa dừa thơm ngon, dễ làm tại nhà.",
         image: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS-_KWIaJ6PTCPWjxQPiSgr1gzqfFv699jDWVeqvZRAUzjACsXU",
@@ -261,8 +338,9 @@ const recipes = [
         authorId: 3,
         createdAt: "2024-10-10"
     },
+    
     {
-        id: 14,
+        id: 17,
         title: "Sinh Tố Dâu Tây",
         description: "Sinh tố dâu tây thơm ngon, dễ làm tại nhà.",
         image: "https://dodoto.vn/wp-content/uploads/2024/01/cach-lam-sinh-to-dau-dodoto.vn_.jpg",
@@ -280,8 +358,9 @@ const recipes = [
         authorId: 2,
         createdAt: "2024-12-10"
     },
+    
     {
-        id: 15,
+        id: 18,
         title: "Milo Dầm",
         description: "Milo dầm thơm ngon, dễ làm tại nhà.",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT97P0U7YgWpU6AXKTIRZQtU_CDG65-W7FgRg&s",
@@ -300,8 +379,10 @@ const recipes = [
         authorId: 2,
         createdAt: "2025-11-19"
     },
+    
+    /* ===============================MÓN TRÁNG MIỆNG=============================== */
     {
-        id: 16,
+        id: 19,
         title: "Bánh Flan Caramel",
         description: "Bánh flan mềm mịn với lớp caramen ngọt đắng hấp dẫn.",
         image: "https://cdn-media.sforum.vn/storage/app/media/wp-content/uploads/2023/11/cach-lam-caramen-thumbnail.jpg",
@@ -322,8 +403,9 @@ const recipes = [
         authorId: 1,
         createdAt: "2023-06-18"
     },
+    
     {
-        id: 17,
+        id: 20,
         title: "Chè Vải Hạt Sen",
         description: "Chè vải hạt sen thanh mát, giải nhiệt mùa hè.",
         image: "https://cdn.tgdd.vn/Files/2017/07/04/999563/cach-nau-che-vai-hat-sen-ngon-202207121412146552.jpg",
@@ -341,8 +423,9 @@ const recipes = [
         authorId: 3,
         createdAt: "2024-02-13"
     },
+    
     {
-        id: 18,
+        id: 21,
         title: "Bánh Bông Lan",
         description: "Bánh bông lan mềm mịn, thơm ngon với lớp đậu xanh và nước cốt dừa béo ngậy.",
         image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAGLXa66b2_UbP7aTBnzSzDbsS61jFS7xEVQ&s",
@@ -362,8 +445,9 @@ const recipes = [
         authorId: 3,
         createdAt: "2024-01-11"
     },
+    
     {
-        id: 19,
+        id: 22,
         title: "Kem Dưa Hấu Sữa Chua",
         description: "Kem dưa hấu sữa chua mát lạnh, thơm ngon và dễ làm tại nhà.",
         image: "https://cdn.tgdd.vn/Files/2021/08/09/1374104/cach-lam-kem-dua-hau-sua-chua-thom-ngon-mat-lanh-202108092025031214.jpg",
@@ -381,6 +465,71 @@ const recipes = [
         authorId: 3,
         createdAt: "2025-03-10"
     },
+
+    /* ===============================MÓN CHAY=============================== */
+    {
+        id: 23,
+        title: "Ớt Chuông Xào Chay",
+        description: "Ớt chuông xào chay giòn ngon, bổ dưỡng và dễ làm tại nhà.",
+        image: "https://cdn.tgdd.vn/2021/10/CookDish/cach-lam-muc-xao-ot-chuong-don-gian-gion-ngon-cho-ca-gia-dinh-avt-1200x676.jpg",
+        time: 50,
+        difficulty: "Dễ",
+        category: "vegetarian",
+        ingredients: ["3 trái ớt chuông", "6 nấm mỡ (100g)", "2 tép tỏi", "2 muỗng dầu ăn", "Gia vị: đường, muối, tiêu, hạt nêm"],
+        steps: [
+            "Ớt chuông mua về các bạn mang rửa sạch, sau đó dùng dao chẻ đôi, bỏ hạt rồi tiếp tục cắt ớt thành các miếng vừa ăn.",
+            "Nấm mỡ bạn đem rửa với nước cho sạch, để ráo. Dùng dao cắt nấm thành các lát dày khoảng 1/2 lóng tay nhỏ.",
+            "Tỏi băm nhỏ, ớt chuông cắt lát mỏng, nấm mỡ cắt lát mỏng.",
+            "Đun nóng chảo, cho dầu vào xào tỏi thơm, sau đó cho ớt chuông và nấm mỡ vào xào đều tay đến khi ớt chín mềm.",
+            "Cho gia vị vào xào đều tay, tắt bếp và thưởng thức."
+        ],
+        likes: 31,
+        authorId: 2,
+        createdAt: "2025-03-17"
+    },
+
+    {
+        id: 24,
+        title: "Canh Rau Bí Luộc",
+        description: "Canh rau bí luộc thanh mát, dễ làm và rất bổ dưỡng.",
+        image: "https://cdnv2.tgdd.vn/mwg-static/common/Common/H%C3%ACnh%20m%C3%B3n%20an%20t11%20%281200%20x%20676%20px%29%20%2886%29.jpg",
+        time: 30,
+        difficulty: "Dễ",
+        category: "vegetarian",
+        ingredients: ["1 bó rau bí", "Gia vị: muối, bột ngọt, hạt nêm"],
+        steps: [
+            "Nhặt rau bí bằng cách tước bỏ lớp xơ mỏng bên ngoài của cọng và cuống lá để khi ăn rau không bị dai. Đây là mẹo luộc rau xanh ngon mà không bị xơ.",
+            "Sau đó, bạn ngắt rau thành những đoạn vừa ăn, vò nhẹ phần lá để rau mềm hơn rồi rửa thật sạch với nước và để cho ráo.",
+            "Đun một nồi nước lên bếp và đun sôi bùng lên trên lửa lớn. Để rau luộc được xanh và đậm vị hơn, bạn cho vào nồi nước sôi khoảng nửa muỗng muối.",
+            "Khi nước đã sôi thật già, bạn cho toàn bộ phần rau bí đã chuẩn bị vào nồi. Dùng đũa nhấn cho rau ngập hoàn toàn trong nước và tiếp tục duy trì lửa lớn, không đậy nắp vung để rau giữ được màu xanh đẹp mắt.",
+            "Luộc rau trong khoảng 5 phút cho đến khi rau chín tới, thân rau mềm nhưng vẫn giữ được độ giòn là được.",
+            "Khi rau đã chín, bạn tắt bếp và vớt rau ra đĩa. Phần nước luộc bạn nêm thêm một chút mì chính (bột ngọt) để làm canh."
+        ],
+        likes: 12,
+        authorId: 1,
+        createdAt: "2024-07-18"
+    },
+
+    {
+        id: 25,
+        title: "Cơm Dừa Kho Chay",
+        description: "Cơm dừa kho chay thơm ngon, bổ dưỡng và dễ làm tại nhà.",
+        image: "https://cdn.tgdd.vn/2021/02/CookProduct/THUMB-1200x676-15.jpg",
+        time: 25,
+        difficulty: "Dễ",
+        category: "vegetarian",
+        ingredients: ["200g cơm dừa", "3 củ hành tím", "1 trái ớt", "1 ít dầu ăn", "2 muỗng nước mắm, 1 muỗng hạt nêm", "1 ít tương ớt", "i ít tiêu xay và đường"],
+        steps: [
+            "200gr cơm dừa tươi bạn mang thái sợi dày 1/2 lóng tay. Hành tím lột vỏ và ớt bạn thái lát mỏng.",
+            "Cho 1 muỗng canh dầu ăn vào chảo, khi dầu nóng cho 1 muỗng canh đường và thắng đường đến khi nước màu chuyển màu cánh gián là hoàn thành.",
+            "Sau đó, bạn cho 1 ít hành tím, 1 ít ớt, 2 muỗng nước mắm, 1 muỗng đường, 1 muỗng hạt nêm chay, 1 ít tiêu xay, 1 ít tương ớt, đảo đều đến khi các nguyên liệu thấm đều nhau.",
+            "Tiếp đến, cho cơm dừa vào kho dưới lửa nhỏ, đảo đều khoảng 3 - 5 phút là có thể tắt bếp.",
+            "Cho cơm dừa kho chay ra đĩa và thưởng thức ngay khi còn nóng."
+        ],
+        likes: 39,
+        authorId: 2,
+        createdAt: "2024-02-14"
+    }
 ];
 
 const categories = {
