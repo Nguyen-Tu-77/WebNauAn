@@ -403,7 +403,6 @@ const recipes = [
         authorId: 1,
         createdAt: "2023-06-18"
     },
-    
     {
         id: 20,
         title: "Chè Vải Hạt Sen",
@@ -423,7 +422,6 @@ const recipes = [
         authorId: 3,
         createdAt: "2024-02-13"
     },
-    
     {
         id: 21,
         title: "Bánh Bông Lan",
@@ -445,7 +443,6 @@ const recipes = [
         authorId: 3,
         createdAt: "2024-01-11"
     },
-    
     {
         id: 22,
         title: "Kem Dưa Hấu Sữa Chua",
@@ -2079,4 +2076,3 @@ document.addEventListener('DOMContentLoaded', function() {
     setupModals();
     setupSearchListeners();
 });
-
